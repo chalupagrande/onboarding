@@ -19,20 +19,17 @@ body{
 ~~~~~~~~~~~~~~~~~~~ */
 .content{
   position:relative;
+  display:flex;
 }
 .slideout__header__close{
   width:ems(20);
 }
 
 .slideout{
-  position:fixed;
-  right:0;
-  top:0;
   width: ems(305);
   height:100vh;
   background-color: $dark-blue;
   color: $light-font;
-  //transform position set by JS
 }
 
 .slideout__header{
@@ -47,17 +44,30 @@ body{
 /*
 Progress Dots
 ~~~~~~~~~~~~~~~~~~~~~ */
-.progress-dots{
+.progress-dots ul{
   width:100%;
+  display:flex;
+  align-items: center;
 
+  li{
+    padding:ems(1);
+  }
+}
 
-  ul{
-    width:100%;
-    display:flex;
-    flex-flow:row nowrap;
+.nav-dot{
+  width:ems(14);
+  height:ems(14);
+  border-radius:50%;
+  border:2px solid $bright-blue;
 
-    li{
-    }
+  &.fill{
+    background-color:$bright-blue;
+  }
+
+  &-divider{
+    height:1px;
+    width:20px;
+    border-top:1px solid $bright-blue;
   }
 }
 
@@ -70,3 +80,4 @@ TYPOGRAPHY
   font-weight: bold;
   margin:ems(27) ems(40) ems(20) ems(40);
 }
+
