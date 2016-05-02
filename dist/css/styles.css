@@ -2669,15 +2669,13 @@ body {
 /* Slideout
 ~~~~~~~~~~~~~~~~~~~ */
 .content {
-  position: relative; }
+  position: relative;
+  display: flex; }
 
 .slideout__header__close {
   width: 1.25em; }
 
 .slideout {
-  position: fixed;
-  right: 0;
-  top: 0;
   width: 19.0625em;
   height: 100vh;
   background-color: #152934;
@@ -2693,12 +2691,24 @@ body {
 /*
 Progress Dots
 ~~~~~~~~~~~~~~~~~~~~~ */
-.progress-dots {
-  width: 100%; }
-  .progress-dots ul {
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap; }
+.progress-dots ul {
+  width: 100%;
+  display: flex;
+  align-items: center; }
+  .progress-dots ul li {
+    padding: 0.0625em; }
+
+.nav-dot {
+  width: 0.875em;
+  height: 0.875em;
+  border-radius: 50%;
+  border: 2px solid #5AAAFA; }
+  .nav-dot.fill {
+    background-color: #5AAAFA; }
+  .nav-dot-divider {
+    height: 1px;
+    width: 20px;
+    border-top: 1px solid #5AAAFA; }
 
 /*
 TYPOGRAPHY

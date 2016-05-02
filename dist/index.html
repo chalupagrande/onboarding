@@ -7,9 +7,6 @@
 </head>
 <body>
 <div class="wrapper">
-  <div class="bluemix-header">
-    <img src="images/header.png" alt="header">
-  </div>
   <div class="content">
     <img src="images/map.png" alt="map">
     <!-- Guided walkthrough tray -->
@@ -21,23 +18,21 @@
         <img class="slideout__header__close" src="images/close-cancel-error_32.svg" alt="close">
       </div>
 
-      <div class="slideout__content">
-        <h1 class="title">Guides</h1>
-      </div>
-      <div class="progress-dots">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
     </div><!-- /slideout -->
   </div><!-- /content -->
 </div><!-- /wrapper -->
 
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~
+      COMPONENTS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
 
-<script src="js/app.js"></script>
+<div class="progress-dots" data-count="5"></div>
+
+
+
+<script src="js/scripts/components/dots.js"></script>
+<script src="js/scripts/app.js"></script>
 </body>
 </html>
