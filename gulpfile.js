@@ -31,6 +31,7 @@ gulp.task('process', function(){
              .pipe(sass())
              .pipe(concat('styles.css'))
              .pipe(gulp.dest('./dist/css'))
+             .pipe(browserSync.stream())
 })
 
 gulp.task('default', ['serve'])

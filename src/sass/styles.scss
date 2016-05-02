@@ -1,2 +1,72 @@
 @import 'bower_components/bluemix-components/styles';
+@import 'functions';
+$browser-context:16;
+$dark-blue: #152934;
+$darker-blue: #0f212e;
+$bright-blue: #5AAAFA;
+$light-font: #ffffff;
 
+
+body{
+  font-size: 16px;
+}
+
+.bluemix-header{
+  position:static;
+}
+
+/* Slideout
+~~~~~~~~~~~~~~~~~~~ */
+.content{
+  position:relative;
+}
+.slideout__header__close{
+  width:ems(20);
+}
+
+.slideout{
+  position:fixed;
+  right:0;
+  top:0;
+  width: ems(305);
+  height:100vh;
+  background-color: $dark-blue;
+  color: $light-font;
+  //transform position set by JS
+}
+
+.slideout__header{
+  display:flex;
+  justify-content: space-between;
+  background-color: $darker-blue;
+  height: ems(50);
+  padding:0 ems(20);
+}
+
+
+/*
+Progress Dots
+~~~~~~~~~~~~~~~~~~~~~ */
+.progress-dots{
+  width:100%;
+
+
+  ul{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+
+    li{
+    }
+  }
+}
+
+/*
+TYPOGRAPHY
+~~~~~~~~~~~~~~~~~ */
+
+.title{
+  font-size: ems(20);
+  font-weight: bold;
+  margin:ems(27) ems(40) ems(20) ems(40);
+}
