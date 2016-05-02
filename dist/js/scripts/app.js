@@ -1,4 +1,7 @@
+'use strict';
+
 /*
   Reposition Slideout Container on scroll
 */
-"use strict";
+
+var dots = new Dots(document.querySelector('.progress-dots'));

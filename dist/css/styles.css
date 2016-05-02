@@ -2661,7 +2661,8 @@ body {
   stroke-dashoffset: 40; }
 
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  box-sizing: border-box; }
 
 .bluemix-header {
   position: static; }
@@ -2699,16 +2700,47 @@ Progress Dots
     padding: 0.0625em; }
 
 .nav-dot {
-  width: 0.875em;
-  height: 0.875em;
+  width: 0.625em;
+  height: 0.625em;
   border-radius: 50%;
-  border: 2px solid #5AAAFA; }
+  border: 1px solid #5AAAFA;
+  transition: background-color 0.5s; }
   .nav-dot.fill {
     background-color: #5AAAFA; }
   .nav-dot-divider {
-    height: 1px;
-    width: 20px;
+    height: 0.0625em;
+    width: 1.25em;
     border-top: 1px solid #5AAAFA; }
+
+/*
+  Guides
+~~~~~~~~~~~~~~~~~~~~~ */
+.guide {
+  align-items: center;
+  border-left: 8px solid #5AAAFA;
+  display: flex;
+  font-size: 0.875em;
+  margin: 1px 0;
+  min-height: 4.75em;
+  width: 100%; }
+
+.guide__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; }
+
+.guide__content {
+  padding: 0 0.375em 0 1.875em;
+  flex-flow: 4; }
+
+.guide__status {
+  font-size: 0.75em;
+  margin-right: 0.3125em;
+  align-self: flex-start;
+  flex-flow: 1; }
+
+.guide__title {
+  font-weight: bold; }
 
 /*
 TYPOGRAPHY

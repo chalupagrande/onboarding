@@ -6,9 +6,9 @@ $darker-blue: #0f212e;
 $bright-blue: #5AAAFA;
 $light-font: #ffffff;
 
-
 body{
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .bluemix-header{
@@ -55,20 +55,51 @@ Progress Dots
 }
 
 .nav-dot{
-  width:ems(14);
-  height:ems(14);
+  width:ems(10);
+  height:ems(10);
   border-radius:50%;
-  border:2px solid $bright-blue;
+  border:1px solid $bright-blue;
+  transition:background-color 0.5s;
 
   &.fill{
     background-color:$bright-blue;
   }
 
   &-divider{
-    height:1px;
-    width:20px;
+    height:ems(1);
+    width:ems(20);
     border-top:1px solid $bright-blue;
   }
+}
+/*
+  Guides
+~~~~~~~~~~~~~~~~~~~~~ */
+.guide{
+  align-items: center;
+  border-left:8px solid $bright-blue;
+  display:flex;
+  font-size:ems(14);
+  margin:1px 0;
+  min-height:ems(76);
+  width:100%;
+}
+.guide__wrap{
+  display:flex;
+  justify-content: space-between;
+  align-items:baseline;
+}
+.guide__content{
+  padding:0 ems(6) 0 ems(30);
+  flex-flow:4;
+}
+.guide__status{
+  font-size:ems(12);
+  margin-right:ems(5);
+  align-self:flex-start;
+  flex-flow: 1;
+}
+.guide__title{
+  font-weight: bold;
 }
 
 /*
