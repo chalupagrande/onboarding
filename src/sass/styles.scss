@@ -15,16 +15,25 @@ body{
   position:static;
 }
 
-/* Slideout
-~~~~~~~~~~~~~~~~~~~ */
-.content{
-  position:relative;
-  display:flex;
+/*
+TYPOGRAPHY
+~~~~~~~~~~~~~~~~~ */
+
+.title{
+  font-size: ems(20);
+  font-weight: bold;
+  margin:ems(27) ems(40) ems(20) ems(40);
 }
-.slideout__header__close{
-  width:ems(20);
+/* Globals
+~~~~~~~~~~~~~~~~~~~~ */
+.content{
+  display:flex;
+  justify-content: space-between;
 }
 
+
+/* Slideout
+~~~~~~~~~~~~~~~~~~~ */
 .slideout{
   width: ems(305);
   height:100vh;
@@ -39,6 +48,10 @@ body{
   height: ems(50);
   padding:0 ems(20);
 }
+.slideout__header__close{
+  width:ems(20);
+}
+
 
 
 /*
@@ -97,18 +110,25 @@ Progress Dots
   margin-right:ems(5);
   align-self:flex-start;
   flex-flow: 1;
+
+  &__new{
+    display:flex;
+    align-items: flex-start;
+    line-height:16px; // I DONT KNOW WHY THIS WONT TAKE EMS
+    &:before{
+      margin-right:ems(1);
+      font-size:ems(50) !important;
+      content:'•';
+      color:red;
+    };
+  }
+  &__in_progress{
+    color:$bright-blue;
+  }
+
+
 }
 .guide__title{
   font-weight: bold;
-}
-
-/*
-TYPOGRAPHY
-~~~~~~~~~~~~~~~~~ */
-
-.title{
-  font-size: ems(20);
-  font-weight: bold;
-  margin:ems(27) ems(40) ems(20) ems(40);
 }
 

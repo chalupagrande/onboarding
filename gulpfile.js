@@ -13,13 +13,23 @@ gulp.task('serve', ['process', 'compile'], function(){
   })
 
   gulp.watch(['src/**/*.js'], ['compile'])
-  gulp.watch(["src/sass/*.scss"], ['process']);
-  gulp.watch(['dist/*.html','src/sass/*.scss','src/**/*.js']).on('change', browserSync.reload)
+  gulp.watch(["src/sass/**/*.scss"], ['process']);
+  gulp.watch(['dist/*.html','src/sass/**/*.scss','src/**/*.js']).on('change', browserSync.reload)
 
 })
+gulp.task('components', function(){
+  return gulp.src('src/scripts/components/*.js')
+             .pipe(concat('components.js'))
+             .pipe(babel({
+               presets:['es2015']
+             }))
+             .pipe(gulp.dest('./dist/js'))
+             .pipe(browserSync.stream())
+})
 
-gulp.task('compile', function(){
-  return gulp.src('src/**/*.js')
+
+gulp.task('compile', ['components'],function(){
+  return gulp.src('src/scripts/*.js')
              .pipe(babel({
                presets:['es2015']
              }))
@@ -27,7 +37,7 @@ gulp.task('compile', function(){
 })
 
 gulp.task('process', function(){
-  return gulp.src('src/sass/*.scss')
+  return gulp.src('src/sass/**/*.scss')
              .pipe(sass())
              .pipe(concat('styles.css'))
              .pipe(gulp.dest('./dist/css'))

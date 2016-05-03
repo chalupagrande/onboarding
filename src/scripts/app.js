@@ -2,4 +2,5 @@
   Reposition Slideout Container on scroll
 */
 
-var dots = new Dots(document.querySelector('.progress-dots'))
+var monitoringGuide = new Guide('.monitoring')
+var dots = new Dots('.progress-dots')

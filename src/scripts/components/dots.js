@@ -4,9 +4,9 @@ class Dots{
      dots you would like.
   */
   constructor(element){
-    this._count = element.getAttribute('data-count')
+    this._element = document.querySelector(element)
+    this._count = this._element.getAttribute('data-count')
     this._current = 0
-    this._element = element
     this._dots = []
 
     var list = document.createElement('ul')
@@ -27,19 +27,27 @@ class Dots{
 
       }
     }
-    element.appendChild(list)
+    this._element.appendChild(list)
   }
 
   next(){
-    this._dots[this._current].classList.add('fill')
+    if(this._current == this._count) return
+    toggleClass(this._dots[this._current],'fill')
     this._current < this._count ? this._current += 1 : 1;
     return this._current
   }
 
   previous(){
-    this._current > 0 ? this._current -= 1 : 1;
-    this._dots[this._current].classList.remove('fill')
+    if(this._current == 0) return
+    toggleClass(this._dots[this._current], 'fill')
     return this._current
+  }
+
+  set(num){
+    this._current = num
+    for(var i = 0; i < this._current; i++){
+      toggleClass(this._dots[i],'fill')
+    }
   }
 
   current(){
