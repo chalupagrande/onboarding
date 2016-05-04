@@ -1,55 +1,61 @@
 @import 'bower_components/bluemix-components/styles';
 @import 'functions';
-$browser-context:16;
+$browser-context: 16px;
 $dark-blue: #152934;
 $darker-blue: #0f212e;
 $bright-blue: #5AAAFA;
 $light-font: #ffffff;
 
-body{
-  font-size: 16px;
+body {
+  font-size: $browser-context;
   box-sizing: border-box;
 }
 
-.bluemix-header{
-  position:static;
+.bluemix-header {
+  position: static;
 }
 
 /*
 TYPOGRAPHY
 ~~~~~~~~~~~~~~~~~ */
 
-.title{
+.h1 {
   font-size: ems(20);
   font-weight: bold;
-  margin:ems(27) ems(40) ems(20) ems(40);
+  margin: ems(27) 0 ems(20) 0;
+}
+p {
+  font-size: ems(14);
+  line-height: 20px;
 }
 /* Globals
 ~~~~~~~~~~~~~~~~~~~~ */
-.content{
-  display:flex;
+.content {
+  height:100%;
+  display: flex;
   justify-content: space-between;
 }
 
 
 /* Slideout
 ~~~~~~~~~~~~~~~~~~~ */
-.slideout{
+.slideout {
   width: ems(305);
-  height:100vh;
+  height: 100vh;
   background-color: $dark-blue;
   color: $light-font;
+  position: relative;
 }
 
-.slideout__header{
-  display:flex;
+.slideout__header {
+  display: flex;
   justify-content: space-between;
   background-color: $darker-blue;
   height: ems(50);
-  padding:0 ems(20);
+  padding: 0 ems(20);
 }
-.slideout__header__close{
-  width:ems(20);
+.slideout__header__close {
+  width: ems(20);
 }
 
 
@@ -57,78 +63,108 @@ TYPOGRAPHY
 /*
 Progress Dots
 ~~~~~~~~~~~~~~~~~~~~~ */
-.progress-dots ul{
-  width:100%;
-  display:flex;
+.progress-dots {
+  display: flex;
+  justify-content: center;
+}
+.progress-dots__list {
+  display: flex;
   align-items: center;
 
-  li{
-    padding:ems(1);
+  &__item {
+    padding: ems(1);
   }
 }
 
-.nav-dot{
-  width:ems(10);
-  height:ems(10);
-  border-radius:50%;
-  border:1px solid $bright-blue;
-  transition:background-color 0.5s;
+.nav-dot {
+  width: ems(10);
+  height: ems(10);
+  border-radius: 50%;
+  border: 1px solid $bright-blue;
+  transition: background-color 0.5s;
 
-  &.fill{
-    background-color:$bright-blue;
+  &.fill {
+    background-color: $bright-blue;
   }
 
-  &-divider{
-    height:ems(1);
-    width:ems(20);
-    border-top:1px solid $bright-blue;
+  &-divider {
+    height: ems(1);
+    width: ems(20);
+    border-top: 1px solid $bright-blue;
   }
 }
-/*
-  Guides
+/*  Guides
 ~~~~~~~~~~~~~~~~~~~~~ */
 .guide{
   align-items: center;
-  border-left:8px solid $bright-blue;
-  display:flex;
-  font-size:ems(14);
-  margin:1px 0;
-  min-height:ems(76);
-  width:100%;
+  border-left: ems(8) solid $bright-blue;
+  display: flex;
+  font-size: ems(14);
+  margin: 1px 0;
+  min-height: ems(76);
+  width: 100%;
 }
-.guide__wrap{
-  display:flex;
+.guide__wrap {
+  align-items: baseline;
+  display: flex;
   justify-content: space-between;
-  align-items:baseline;
 }
-.guide__content{
-  padding:0 ems(6) 0 ems(30);
-  flex-flow:4;
+.guide__content {
+  flex-flow: 4;
+  padding: 0 ems(6) 0 ems(30);
 }
-.guide__status{
-  font-size:ems(12);
-  margin-right:ems(5);
-  align-self:flex-start;
+.guide__status {
+  align-self: flex-start;
   flex-flow: 1;
+  font-size: ems(12);
+  margin-right: ems(5);
 
-  &__new{
-    display:flex;
+  &__new {
     align-items: flex-start;
-    line-height:16px; // I DONT KNOW WHY THIS WONT TAKE EMS
-    &:before{
-      margin-right:ems(1);
-      font-size:ems(50) !important;
-      content:'•';
-      color:red;
+    display: flex;
+    line-height: 16px; // I DONT KNOW WHY THIS WONT TAKE EMS
+    &:before {
+      margin-right: ems(1);
+      font-size: ems(50) !important;
+      content: '•';
+      color: red;
     };
   }
-  &__in_progress{
-    color:$bright-blue;
+  &__in_progress {
+    color: $bright-blue;
   }
 
-
 }
-.guide__title{
+.guide__title {
   font-weight: bold;
 }
 
+/*  Page
+~~~~~~~~~~~~~~~~~~~~~ */
+.page{
+  position:relative;
+  margin: ems(40) ems(40) 0 ems(40);
+
+  &__item {
+    margin-top: ems(40);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+
+    &__icon{
+      margin: ems(4) ems(20) 0 0;
+      width: ems(20);
+      height: ems(20);
+    }
+  }
+  &__footer {
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* page specific highlighting */
+  & .highlight {
+    font-weight: bold;
+    color: $bright-blue;
+  }
+}

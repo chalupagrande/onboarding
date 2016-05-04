@@ -19,8 +19,10 @@ var Dots = function () {
     this._dots = [];
 
     var list = document.createElement('ul');
+    list.setAttribute('class', 'progress-dots__list');
     for (var i = 0; i < this._count; i++) {
       var li = document.createElement('li');
+      li.setAttribute('class', 'progress-dots__list__item');
       var dot = document.createElement('div');
       dot.setAttribute('class', 'nav-dot');
       this._dots.push(dot);
@@ -41,7 +43,7 @@ var Dots = function () {
   _createClass(Dots, [{
     key: 'next',
     value: function next() {
-      if (this._current == this._count) return;
+      if (this._current == this._count) return this._current;
       toggleClass(this._dots[this._current], 'fill');
       this._current < this._count ? this._current += 1 : 1;
       return this._current;
@@ -49,7 +51,8 @@ var Dots = function () {
   }, {
     key: 'previous',
     value: function previous() {
-      if (this._current == 0) return;
+      if (this._current == 0) return this._current;
+      this._current -= 1;
       toggleClass(this._dots[this._current], 'fill');
       return this._current;
     }
@@ -57,8 +60,12 @@ var Dots = function () {
     key: 'set',
     value: function set(num) {
       this._current = num;
-      for (var i = 0; i < this._current; i++) {
-        toggleClass(this._dots[i], 'fill');
+      for (var i = 0; i < this._dots.length; i++) {
+        if (!hasClass(this._dots[i], 'fill') && i < num) {
+          toggleClass(this._dots[i], 'fill');
+        } else if (hasClass(this._dots[i], 'fill') && i >= num) {
+          toggleClass(this._dots[i], 'fill');
+        }
       }
     }
   }, {
@@ -122,3 +129,9 @@ var Guide = function () {
 
   return Guide;
 }();
+
+var Page = function Page(element) {
+  _classCallCheck(this, Page);
+
+  this._element = document.querySelector(element);
+};
