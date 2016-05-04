@@ -10,11 +10,11 @@ var Dots = function () {
      dots you would like.
   */
 
-  function Dots(element) {
+  function Dots(element, numSteps) {
     _classCallCheck(this, Dots);
 
     this._element = document.querySelector(element);
-    this._count = this._element.getAttribute('data-count');
+    this._count = numSteps || this._element.getAttribute('data-count');
     this._current = 0;
     this._dots = [];
 
@@ -78,7 +78,52 @@ var Dots = function () {
   return Dots;
 }();
 
-var Guide = function () {
+var GuideFooter = function () {
+  /*
+  opts = {
+    prev = STRING: text of previous button
+    next = STRING: text of next button
+    default = STRING: text for the default overview button
+    skip = STRING: text to skip the tutorial
+  }
+  */
+
+  function GuideFooter(element, page, opts) {
+    _classCallCheck(this, GuideFooter);
+
+    this._element = document.querySelector(element);
+    this._defaultText = opts.default || "See How It Works";
+    this._prevText = opts.prev || "Previous";
+    this._nextText = opts.next || "Ok, Got it";
+    this._skipText = opts.skip || "Skip this tutorial";
+
+    this._skip = this._element.querySelector('.js__footer-skip');
+    this._buttons = this._element.querySelector('.js__footer-buttons');
+  }
+
+  _createClass(GuideFooter, [{
+    key: 'update',
+    value: function update(pageNum, page, nextPage) {
+      if (pageNum == 0) {
+        this._skip.innerText = this._skipText;
+
+        //add a button here
+      }
+    }
+  }]);
+
+  return GuideFooter;
+}();
+
+var GuidePage = function GuidePage(element, id, title) {
+  _classCallCheck(this, GuidePage);
+
+  this._id = id || 0;
+  this._element = document.querySelector(element);
+  this.title = title;
+};
+
+var GuideTag = function () {
   /*
    Status should be a number between 0-2
     0 = new
@@ -86,12 +131,12 @@ var Guide = function () {
    2 = Completed
   */
 
-  function Guide(element, status) {
-    _classCallCheck(this, Guide);
+  function GuideTag(element, status) {
+    _classCallCheck(this, GuideTag);
 
     this._element = document.querySelector(element);
     this._status = status || 0;
-    this._statusElement = this._element.querySelector('.guide__status');
+    this._statusElement = this._element.querySelector('.js__status');
     this._page = 0;
 
     this.updateStatus();
@@ -100,7 +145,7 @@ var Guide = function () {
   // status is a number 0-2
 
 
-  _createClass(Guide, [{
+  _createClass(GuideTag, [{
     key: 'updateStatus',
     value: function updateStatus(status) {
       //set status
@@ -111,7 +156,7 @@ var Guide = function () {
       var stati = ['new', 'in progress', 'completed'];
       this._status = status || 0;
       this._element.classList;
-      this._statusElement.innerHTML = '<span class="guide__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status].toUpperCase() + '</span>';
+      this._statusElement.innerHTML = '<span class="guide-tag__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status].toUpperCase() + '</span>';
     }
   }, {
     key: 'nextPage',
@@ -127,11 +172,39 @@ var Guide = function () {
     }
   }]);
 
-  return Guide;
+  return GuideTag;
 }();
 
-var Page = function Page(element) {
-  _classCallCheck(this, Page);
+var Guide = function () {
+  function Guide(_ref) {
+    var tag = _ref.tag;
+    var footer = _ref.footer;
+    var _ref$pages = _ref.pages;
+    var pages = _ref$pages === undefined ? [] : _ref$pages;
 
-  this._element = document.querySelector(element);
-};
+    _classCallCheck(this, Guide);
+
+    this._currentPage = 0;
+    this._pages = pages;
+
+    this.tag = tag;
+    this.footer = new GuideFooter('.page__footer');
+    this.dots = new Dots('.progress-dots', this._pages.length);
+
+    this.footer.update(this._currentPage, this._pages[this._currentPage]);
+  }
+
+  _createClass(Guide, [{
+    key: 'next',
+    value: function next() {
+      if (this._crrentPage == this._pages.length) return;
+      this._currentPage += 1;
+
+      this.footer.update(this.currentPage, this._pages[this._currentPage], this._pages[this._currentPage + 1]);
+      this.dots.next();
+      this._pages[this._currentPage].render();
+    }
+  }]);
+
+  return Guide;
+}();

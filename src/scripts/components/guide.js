@@ -1,40 +1,24 @@
 class Guide{
-  /*
-   Status should be a number between 0-2
+  constructor({tag, footer, pages = []}){
 
-   0 = new
-   1 = In Progress
-   2 = Completed
-  */
-  constructor(element, status){
-    this._element       = document.querySelector(element)
-    this._status        = status || 0
-    this._statusElement = this._element.querySelector('.guide__status')
-    this._page          = 0
+    this._currentPage = 0
+    this._pages      = pages
 
-    this.updateStatus()
+    this.tag    = tag
+    this.footer = new GuideFooter('.page__footer')
+    this.dots   = new Dots('.progress-dots', this._pages.length)
+
+    this.footer.update(this._currentPage, this._pages[this._currentPage])
   }
 
-  // status is a number 0-2
-  updateStatus(status){
-    //set status
-    if(status < 0 || status > 2){
-      return this._status
-    }
+  next(){
+    if(this._crrentPage == this._pages.length) return
+    this._currentPage += 1
 
-    const stati = ['new', 'in progress', 'completed']
-    this._status = status || 0
-    this._element.classList
-    this._statusElement.innerHTML = '<span class="guide__status__'+
-                 removeSpaceMakeLowercase(stati[this._status])+'">'+stati[this._status].toUpperCase()+'</span>'
+    this.footer.update(this.currentPage, this._pages[this._currentPage],this._pages[this._currentPage+1])
+    this.dots.next()
+    this._pages[this._currentPage].render()
   }
 
-  nextPage(){
-    this._page += 1
-    return this._page
-  }
-  previousPage(){
-    this._page -= 1
-    return this._page
-  }
+
 }

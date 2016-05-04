@@ -3,9 +3,9 @@ class Dots{
      element must have a `data-count` attribute of the number of
      dots you would like.
   */
-  constructor(element){
+  constructor(element, numSteps){
     this._element = document.querySelector(element)
-    this._count = this._element.getAttribute('data-count')
+    this._count = numSteps || this._element.getAttribute('data-count')
     this._current = 0
     this._dots = []
 
