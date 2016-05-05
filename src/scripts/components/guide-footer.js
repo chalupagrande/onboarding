@@ -6,10 +6,8 @@ class GuideFooter{
     default = STRING: text for the default overview button
     skip = STRING: text to skip the tutorial
   }
-
-  element = wrapper to inject footer styles.
   */
-  constructor(element, page, opts){
+  constructor(element, page){
     this._element = document.querySelector(element)
 
     this._skip = this._element.querySelector('.js__footer-skip')
