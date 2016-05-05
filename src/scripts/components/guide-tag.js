@@ -7,7 +7,7 @@ class GuideTag{
    2 = Completed
   */
   constructor(element, status){
-    this._element       = document.querySelector(element)
+    this._element       = getNode(element)
     this._status        = status || 0
     this._statusElement = this._element.querySelector('.js__status')
     this._page          = 0

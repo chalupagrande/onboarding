@@ -5,11 +5,11 @@ class Guide{
     this._pages      = pages
 
     this.tag    = tag
-    this.footer = new GuideFooter('.guide__footer')
-    this.footer.addStyle('.js__footer__style1','.js__footer__style2')
     this.dots   = new Dots('.progress-dots', this._pages.length)
+    // this.footer = new GuideFooter('.guide__footer')
+    // this.footer.addStyle('.js__footer__style1','.js__footer__style2')
 
-    this.footer.update(this._currentPage, this._pages[this._currentPage])
+    // this.footer.update(this._currentPage, this._pages[this._currentPage])
   }
 
   next(){
@@ -20,6 +20,4 @@ class Guide{
     this.dots.next()
     this._pages[this._currentPage].render()
   }
-
-
 }

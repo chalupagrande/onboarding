@@ -4,7 +4,7 @@ class Dots{
      dots you would like.
   */
   constructor(element, numSteps){
-    this._element = document.querySelector(element)
+    this._element = getNode(element)
     this._count = numSteps || this._element.getAttribute('data-count')
     this._current = 0
     this._dots = []

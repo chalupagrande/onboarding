@@ -13,7 +13,7 @@ var Dots = function () {
   function Dots(element, numSteps) {
     _classCallCheck(this, Dots);
 
-    this._element = document.querySelector(element);
+    this._element = getNode(element);
     this._count = numSteps || this._element.getAttribute('data-count');
     this._current = 0;
     this._dots = [];
@@ -86,13 +86,12 @@ var GuideFooter = function () {
     default = STRING: text for the default overview button
     skip = STRING: text to skip the tutorial
   }
-   element = wrapper to inject footer styles.
   */
 
-  function GuideFooter(element, page, opts) {
+  function GuideFooter(element, page) {
     _classCallCheck(this, GuideFooter);
 
-    this._element = document.querySelector(element);
+    this._element = getNode(element);
 
     this._skip = this._element.querySelector('.js__footer-skip');
     this._buttons = this._element.querySelector('.js__footer-buttons');
@@ -116,7 +115,7 @@ var GuidePage = function GuidePage(element, id) {
   _classCallCheck(this, GuidePage);
 
   this._id = id || 0;
-  this._element = document.querySelector(element);
+  this._element = getNode(element);
   this.title = this._element.getAttribute('data-title');
 };
 
@@ -131,7 +130,7 @@ var GuideTag = function () {
   function GuideTag(element, status) {
     _classCallCheck(this, GuideTag);
 
-    this._element = document.querySelector(element);
+    this._element = getNode(element);
     this._status = status || 0;
     this._statusElement = this._element.querySelector('.js__status');
     this._page = 0;
@@ -185,11 +184,11 @@ var Guide = function () {
     this._pages = pages;
 
     this.tag = tag;
-    this.footer = new GuideFooter('.guide__footer');
-    this.footer.addStyle('.js__footer__style1', '.js__footer__style2');
     this.dots = new Dots('.progress-dots', this._pages.length);
+    // this.footer = new GuideFooter('.guide__footer')
+    // this.footer.addStyle('.js__footer__style1','.js__footer__style2')
 
-    this.footer.update(this._currentPage, this._pages[this._currentPage]);
+    // this.footer.update(this._currentPage, this._pages[this._currentPage])
   }
 
   _createClass(Guide, [{
