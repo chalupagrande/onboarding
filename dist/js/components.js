@@ -86,16 +86,13 @@ var GuideFooter = function () {
     default = STRING: text for the default overview button
     skip = STRING: text to skip the tutorial
   }
+   element = wrapper to inject footer styles.
   */
 
   function GuideFooter(element, page, opts) {
     _classCallCheck(this, GuideFooter);
 
     this._element = document.querySelector(element);
-    this._defaultText = opts.default || "See How It Works";
-    this._prevText = opts.prev || "Previous";
-    this._nextText = opts.next || "Ok, Got it";
-    this._skipText = opts.skip || "Skip this tutorial";
 
     this._skip = this._element.querySelector('.js__footer-skip');
     this._buttons = this._element.querySelector('.js__footer-buttons');
@@ -115,12 +112,12 @@ var GuideFooter = function () {
   return GuideFooter;
 }();
 
-var GuidePage = function GuidePage(element, id, title) {
+var GuidePage = function GuidePage(element, id) {
   _classCallCheck(this, GuidePage);
 
   this._id = id || 0;
   this._element = document.querySelector(element);
-  this.title = title;
+  this.title = this._element.getAttribute('data-title');
 };
 
 var GuideTag = function () {
@@ -188,7 +185,8 @@ var Guide = function () {
     this._pages = pages;
 
     this.tag = tag;
-    this.footer = new GuideFooter('.page__footer');
+    this.footer = new GuideFooter('.guide__footer');
+    this.footer.addStyle('.js__footer__style1', '.js__footer__style2');
     this.dots = new Dots('.progress-dots', this._pages.length);
 
     this.footer.update(this._currentPage, this._pages[this._currentPage]);
@@ -200,7 +198,7 @@ var Guide = function () {
       if (this._crrentPage == this._pages.length) return;
       this._currentPage += 1;
 
-      this.footer.update(this.currentPage, this._pages[this._currentPage], this._pages[this._currentPage + 1]);
+      // this.footer.update(this.currentPage, this._pages[this._currentPage],this._pages[this._currentPage+1])
       this.dots.next();
       this._pages[this._currentPage].render();
     }

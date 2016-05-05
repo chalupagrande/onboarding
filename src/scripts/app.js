@@ -3,11 +3,11 @@
 */
 
 
-var monitoringGuide = new GuideTag('.monitoring')
-var page = new GuidePage('.guide__page', 'Welcome To Monitoring')
+var guideTag = new GuideTag('.monitoring')
+var page = new GuidePage('.guide-page')
 
 
 var guide = new Guide({
-  tag: monitoringGuide,
+  tag: guideTag,
   pages: [page, page, page, page, page]
 })

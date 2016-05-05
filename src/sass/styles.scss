@@ -165,7 +165,15 @@ Progress Dots
       height: ems(20);
     }
   }
-  &__footer {
+
+  /* page specific highlighting */
+  & .highlight {
+    font-weight: bold;
+    color: $bright-blue;
+  }
+}
+
+.guide-footer {
     width: 100%;
     height: ems(93);
     position: absolute;
@@ -178,7 +186,7 @@ Progress Dots
       justify-content: center;
 
       & [class*='btn'] {
-        width: ems(120);
+        min-width: ems(120);
 
         &:not(last-child) {
           margin-right: ems(15);
@@ -195,9 +203,8 @@ Progress Dots
     }
   }
 
-  /* page specific highlighting */
-  & .highlight {
-    font-weight: bold;
-    color: $bright-blue;
-  }
+
+.components{
+  display:flex;
+  flex-flow: column nowrap;
 }
