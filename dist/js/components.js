@@ -88,22 +88,72 @@ var GuideFooter = function () {
   }
   */
 
-  function GuideFooter(element, page) {
+  function GuideFooter(element) {
+    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+    var spy = arguments[2];
+
     _classCallCheck(this, GuideFooter);
 
+    this._spy = spy;
     this._element = getNode(element);
-
     this._skip = this._element.querySelector('.js__footer-skip');
     this._buttons = this._element.querySelector('.js__footer-buttons');
+    this._opts = {
+      prev: opts.prev || "Previous",
+      next: opts.next || "Next",
+      default: opts.default || "See How It Works",
+      skip: opts.skip || "Skip this tutorial"
+    };
   }
 
   _createClass(GuideFooter, [{
-    key: 'update',
-    value: function update(pageNum, page, nextPage) {
-      if (pageNum == 0) {
-        this._skip.innerText = this._skipText;
+    key: 'render',
+    value: function render(pageNum, nextTitle) {
+      this._buttons.innerHTML = '';
+      this._skip.innerHTML = '';
 
-        //add a button here
+      if (pageNum == 0) {
+        this._skip.innerText = this._opts.skip;
+      } else {
+        this._skip.innerText = "NEXT: " + nextTitle;
+      }
+      this.buildButtons(pageNum);
+    }
+  }, {
+    key: 'buildButtons',
+    value: function buildButtons(pageNum) {
+      var self = this;
+      if (pageNum == 0) {
+        var btn = document.createElement('button');
+        btn.setAttribute('class', 'btn');
+        btn.setAttribute('type', 'button');
+        btn.innerText = self._opts.default;
+        btn.addEventListener('click', function () {
+          self._spy('next');
+        });
+        self._buttons.appendChild(btn);
+      } else {
+        var btn = document.createElement('button');
+        btn.setAttribute('class', 'btn--secondary');
+        btn.setAttribute('type', 'button');
+        btn.innerText = self._opts.prev;
+
+        btn.addEventListener('click', function () {
+          self._spy('previous');
+        });
+
+        self._buttons.appendChild(btn);
+
+        var btn2 = document.createElement('button');
+        btn2.setAttribute('class', 'btn');
+        btn2.setAttribute('type', 'button');
+        btn2.innerText = self._opts.next;
+
+        btn2.addEventListener('click', function () {
+          self._spy('next');
+        });
+
+        self._buttons.appendChild(btn2);
       }
     }
   }]);
@@ -111,14 +161,31 @@ var GuideFooter = function () {
   return GuideFooter;
 }();
 
-var GuidePage = function GuidePage(element, id, spy) {
-  _classCallCheck(this, GuidePage);
+var GuidePage = function () {
+  function GuidePage(element, id, spy) {
+    _classCallCheck(this, GuidePage);
 
-  this._id = id || 0;
-  this._element = getNode(element);
-  this.title = this._element.getAttribute('data-title');
-  spy('jamie', true, 12);
-};
+    this._id = id || 0;
+    this._element = getNode(element);
+    this.title = this._element.querySelector('[data-title]').getAttribute('data-title');
+
+    this._element.style.display = 'none';
+  }
+
+  _createClass(GuidePage, [{
+    key: 'render',
+    value: function render() {
+      this._element.style.display = 'block';
+    }
+  }, {
+    key: 'remove',
+    value: function remove() {
+      this._element.style.display = 'none';
+    }
+  }]);
+
+  return GuidePage;
+}();
 
 var GuideTag = function () {
   /*
@@ -181,30 +248,65 @@ var Guide = function () {
 
     _classCallCheck(this, Guide);
 
-    this._currentPage = -1;
-    this._tag = tag;
-    this._dots = new Dots('.progress-dots', pages.length);
-    this._pages = [];
-    // this._footer = new GuideFooter()
-
     var self = this;
     var tagSpy = getTagSpy(self);
     var footerSpy = getFooterSpy(self);
 
-    for (var i = pages.length - 1; i >= 0; i--) {
+    this._currentPage = -1;
+    this._tag = tag;
+    this._dots = new Dots('.progress-dots', pages.length);
+    this._pages = [];
+    this._footer = new GuideFooter('.guide-footer', {}, footerSpy);
+
+    for (var i = 0; i < pages.length; i++) {
       this._pages.push(new GuidePage(pages[i], i, tagSpy));
     }
+
+    this.next();
   }
 
   _createClass(Guide, [{
     key: 'next',
     value: function next() {
-      console.log(this);
-      console.log(arguments);
+      if (this._currentPage == this._pages.length - 1) {
+        toggleSlide();
+        return;
+      }
+      if (this._currentPage >= 0) {
+        var page = this._pages[this._currentPage];
+        page.remove();
+      }
+
+      this._currentPage += 1;
+
+      var nextPage = this._pages[this._currentPage];
+      var nextTitle = nextPage ? nextPage.title : '';
+
+      nextPage.render();
+      this._footer.render(this._currentPage, nextTitle);
+      this._dots.next();
     }
   }, {
     key: 'previous',
-    value: function previous() {}
+    value: function previous() {
+      if (this._currentPage == 0) {
+        toggleSlide();
+        return;
+      }
+      if (this._currentPage >= 0) {
+        var page = this._pages[this._currentPage];
+        page.remove();
+      }
+
+      this._currentPage += 1;
+
+      var nextPage = this._pages[this._currentPage];
+      var nextTitle = nextPage ? nextPage.title : '';
+
+      nextPage.render();
+      this._footer.render(this._currentPage, nextTitle);
+      this._dots.next();
+    }
   }]);
 
   return Guide;
@@ -215,7 +317,7 @@ var Guide = function () {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 //spies will be bound to self
 
-var getTagSpy = function getTagSpy(self) {
+function getTagSpy(self) {
   var tagSpy = function tagSpy() {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -224,10 +326,12 @@ var getTagSpy = function getTagSpy(self) {
     this.next.apply(this, args);
   };
   return tagSpy.bind(self);
-};
+}
 
-var getFooterSpy = function getFooterSpy(self) {
+function getFooterSpy(self) {
   var footerSpy = function footerSpy(direction) {
+    console.log(this);
     direction == 'next' ? this.next() : this.previous();
   };
-};
+  return footerSpy.bind(self);
+}

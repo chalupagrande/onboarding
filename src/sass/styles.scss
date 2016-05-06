@@ -192,35 +192,37 @@ Progress Dots
   }
 }
 
+/* Guide Footer
+~~~~~~~~~~~~~~~~~ */
 .guide-footer {
-    width: 100%;
-    height: ems(93);
-    position: absolute;
-    bottom: 0;
-    text-align: center;
+  width: 100%;
+  height: ems(93);
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 
-    &__buttons{
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
+  &__buttons{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
 
-      & [class*='btn'] {
-        min-width: ems(120);
+    & [class*='btn'] {
+      min-width: ems(120);
 
-        &:not(last-child) {
-          margin-right: ems(15);
-        }
-      }
-    }
-    &__skip{
-      margin-top:ems(16);
-
-      &:hover {
-        text-decoration:underline;
-        cursor: pointer !important;
+      &:nth-child(2) {
+        margin-left: ems(15);
       }
     }
   }
+  &__skip{
+    margin-top:ems(16);
+
+    &:hover {
+      text-decoration:underline;
+      cursor: pointer !important;
+    }
+  }
+}
 
   /*  ~~ Numbered Dots  ~~*/
 $size:25;

@@ -9,7 +9,7 @@
 // var page = new GuidePage('.page.page2')
 
 var guide = new Guide({
-  pages: ['.page', '.page', '.page', '.page', '.page', '.page']
+  pages: getNode('.pages').children
 });
 
 var slideout = document.querySelector('.slideout');
