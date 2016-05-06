@@ -5,6 +5,8 @@ $dark-blue: #152934;
 $darker-blue: #0f212e;
 $bright-blue: #5AAAFA;
 $light-font: #ffffff;
+$teal: #6eedd8;
+$red: #FF5050;
 
 body {
   font-size: $browser-context;
@@ -22,7 +24,7 @@ TYPOGRAPHY
 .h1 {
   font-size: ems(20);
   font-weight: bold;
-  margin: ems(27) 0 ems(20) 0;
+  display:block;
 }
 p {
   font-size: ems(14);
@@ -34,17 +36,33 @@ p {
   height:100%;
   display: flex;
   justify-content: space-between;
+  background-color: $red;
+}
+
+.components{
+  display:flex;
+  flex-flow: column nowrap;
+}
+.wrapper{
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden;
 }
 
 
 /* Slideout
 ~~~~~~~~~~~~~~~~~~~ */
+$slideoutWidth: ems(305);
+
 .slideout {
-  width: ems(305);
+  width: $slideoutWidth;
   height: 100vh;
   background-color: $dark-blue;
   color: $light-font;
-  position: relative;
+  position: absolute;
+  right: -$slideoutWidth;
+  top:0;
+  z-index:101;
 }
 
 .slideout__header {
@@ -56,6 +74,7 @@ p {
 }
 .slideout__header__close {
   width: ems(20);
+  cursor:pointer;
 }
 
 
@@ -135,7 +154,7 @@ Progress Dots
       margin-right: ems(1);
       font-size: ems(50) !important;
       content: '•';
-      color: red;
+      color: $red;
     };
   }
   &__in_progress {
@@ -203,8 +222,137 @@ Progress Dots
     }
   }
 
+  /*  ~~ Numbered Dots  ~~*/
+$size:25;
+$centerRatio: $size * -0.1;
+$fontSize: $size * 0.7;
 
-.components{
+.numbered-dot {
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid $teal;
+  color: $teal;
   display:flex;
-  flex-flow: column nowrap;
+  font-size: ems($fontSize);
+  justify-content: center;
+  min-height: ems($size);
+  min-width: ems($size);
+  text-align: center;
+  position: relative;
+
+
+  &.animate {
+    &:before{
+      width: ems($size);
+      height: ems($size);
+      content: "";
+      position: absolute;
+      border: 1px solid $teal;
+      border-radius: 50%;
+      top:ems($centerRatio);
+      left:ems($centerRatio);
+
+      animation-name: pulse;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+
+    };
+    &:after{
+      width:ems($size);
+      height:ems($size);
+      content:"";
+      position:absolute;
+      border:1px solid $teal;
+      border-radius: 50%;
+      top:ems($centerRatio);
+      left:ems($centerRatio);
+
+      animation-name: pulse2;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      /*animation-direction: alternate;*/
+
+    };
+  }
+}
+
+@keyframes pulse {
+  0%   {
+          transform: scale(1);
+          opacity:0.7;
+        };
+  100% {
+          transform: scale(1.2);
+          opacity: 0.25;
+        };
+}
+@keyframes pulse2 {
+  0%   {
+          transform: scale(1);
+          opacity:0.7;
+        };
+  100% {
+          transform: scale(1.6);
+          opacity: 0;
+        };
+}
+
+/* ~~ Question Mark ~~ */
+.help{
+  align-items: center;
+  border-radius: 50%;
+  border: ems(2) solid $bright-blue;
+  bottom:1rem;
+  color: $bright-blue;
+  display: flex;
+  font-size:ems(24);
+  font-weight:bold;
+  height: ems(40);
+  justify-content: center;
+  position:fixed;
+  right:1rem;
+  text-align: center;
+  width: ems(40);
+  z-index:100;
+  cursor:pointer;
+
+  &.highlight{
+    &:before{
+      background-color:$red;
+      border-radius:50%;
+      content:'';
+      height:ems(10);
+      position:absolute;
+      right:0;
+      top:0;
+      width:ems(10);
+    }
+  }
+  &:hover{
+    animation-name: wiggle;
+    animation-duration:0.5s;
+    animation-iteration-count:1;
+  };
+}
+@keyframes wiggle{
+  0%{ transform:rotate(0deg); };
+  25%{ transform:rotate(-15deg); }
+  75%{ transform:rotate(15deg); }
+  100%{ transform: rotate(0deg); }
+}
+
+
+
+/* IGNORE THESE...
+just for formating the compoenents at the bottom of the page
+~~~~~~~~~~~~~*/
+.temp-slideout{
+  width: ems(305);
+  height: 200px;
+  background-color: $dark-blue;
+  color: $light-font;
+  position: relative;
+  right:0;
+  top:0;
 }

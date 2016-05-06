@@ -8,7 +8,7 @@ class GuideFooter{
   }
   */
   constructor(element, page){
-    this._element = document.querySelector(element)
+    this._element = getNode(element)
 
     this._skip = this._element.querySelector('.js__footer-skip')
     this._buttons = this._element.querySelector('.js__footer-buttons')

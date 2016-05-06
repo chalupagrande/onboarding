@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guided Walkthrough</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~
+      COMPONENTS
+  IGNORE THESE BELOW
+~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<div class="components">
+      <!-- Progress Dots -->
+      <div class="progress-dots" data-count="5"></div>
+
+      <!-- Guide -->
+      <div class="guide-tag monitoring">
+        <div class="guide-tag__wrap">
+          <div class="guide-tag__content">
+            <span class="guide-tag__title">Welcome to Monitoring!</span>
+            <p class="guide-tag__description">
+                Get the run down of how to make the most monitoring.
+            </p>
+          </div>
+          <div class="guide-tag__status js__status">Completed</div>
+        </div>
+      </div>
+
+      <!-- Page -->
+      <div class="page" data-title="Welcome To Monitoring">
+        <div class="page__item">
+          <p>
+            <span class="h1">Welcome to Monitoring</span>
+            Here you can learn to:
+          </p>
+        </div>
+        <div class="page__item">
+          <img class="page__item__icon" src="images/search_32.svg" alt="isolate">
+          <p><span class="highlight">Isolate</span> where alerts and problems are stemming from</p>
+        </div>
+        <div class="page__item">
+          <img class="page__item__icon" src="images/edit_32.svg" alt="isolate">
+          <p><span class="highlight">Conduct</span> root cause analysis by correlating metrics with deployment activity</p>
+        </div>
+        <div class="page__item">
+          <img class="page__item__icon" src="images/activity_32.svg" alt="isolate">
+          <p><span class="highlight">Test and Monitor</span> your app's performance over time across different locations</p>
+        </div>
+      </div><!-- /page -->
+      <div class="help highlight">?</div>
+      <div class="temp-slideout">
+      <!-- Footer -->
+        <!-- Style 1 -->
+        <div class="guide-footer js__footer__style1">
+          <div class="guide-footer__buttons js__footer-buttons">
+            <button class="btn" type="button">See How It Works</button>
+          </div>
+          <p class="guide-footer__skip js__footer-skip">Skip this tutorial</p>
+        </div><!-- /page-footer -->
+      </div><!--/temp slideout -->
+      <div class="temp-slideout">
+        <!-- Style 2 -->
+        <div class="guide-footer js__footer__style2">
+          <div class="guide-footer__buttons js__footer-buttons">
+            <button class="btn--secondary" type="button">Previous</button>
+            <button class="btn" type="button">OK, Got It!</button>
+          </div>
+          <p class="guide-footer__skip js__footer-skip">Skip this tutorial</p>
+        </div><!-- /page-footer -->
+      </div>
+</div>
+
+
+
+<script src="js/helpers.js"></script>
+<script src="js/components.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
