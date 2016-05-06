@@ -1,23 +1,47 @@
 class Guide{
   constructor({tag, footer, pages = []}){
 
-    this._currentPage = 0
-    this._pages      = pages
+    this._currentPage = -1
+    this._tag = tag
+    this._dots = new Dots('.progress-dots', pages.length)
+    this._pages = []
+    // this._footer = new GuideFooter()
 
-    this.tag    = tag
-    this.dots   = new Dots('.progress-dots', this._pages.length)
-    // this.footer = new GuideFooter('.guide__footer')
-    // this.footer.addStyle('.js__footer__style1','.js__footer__style2')
 
-    // this.footer.update(this._currentPage, this._pages[this._currentPage])
+  let self = this
+    let tagSpy = getTagSpy(self)
+    let footerSpy = getFooterSpy(self)
+
+
+    for(var i = pages.length-1; i >= 0; i--){
+      this._pages.push( new GuidePage(pages[i], i, tagSpy))
+    }
   }
 
   next(){
-    if(this._crrentPage == this._pages.length) return
-    this._currentPage += 1
+    console.log(this)
+    console.log(arguments)
+  }
+  previous(){
 
-    // this.footer.update(this.currentPage, this._pages[this._currentPage],this._pages[this._currentPage+1])
-    this.dots.next()
-    this._pages[this._currentPage].render()
+  }
+}
+
+
+/*
+  Guide Helpers / Listeners
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+//spies will be bound to self
+
+let getTagSpy = function(self){
+  var tagSpy = function(...args){
+    this.next.apply(this, args)
+  }
+  return tagSpy.bind(self)
+}
+
+let getFooterSpy = function(self){
+  let footerSpy = function(direction){
+    direction == 'next' ? this.next() : this.previous()
   }
 }

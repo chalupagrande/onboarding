@@ -2693,8 +2693,9 @@ p {
   flex-flow: column nowrap; }
 
 .wrapper {
-  width: 100%;
-  position: relative; }
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden; }
 
 /* Slideout
 ~~~~~~~~~~~~~~~~~~~ */
@@ -2836,47 +2837,54 @@ Progress Dots
   border: 1px solid #6eedd8;
   color: #6eedd8;
   display: flex;
-  font-size: 0.875rem;
+  font-size: 1.09375rem;
   justify-content: center;
-  min-height: 1.25rem;
-  min-width: 1.25rem;
+  min-height: 1.5625rem;
+  min-width: 1.5625rem;
   text-align: center;
   position: relative; }
   .numbered-dot.animate:before {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5625rem;
+    height: 1.5625rem;
     content: "";
     position: absolute;
     border: 1px solid #6eedd8;
     border-radius: 50%;
-    top: -0.125rem;
-    left: -0.125rem;
+    top: -0.15625rem;
+    left: -0.15625rem;
     animation-name: pulse;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate; }
   .numbered-dot.animate:after {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5625rem;
+    height: 1.5625rem;
     content: "";
     position: absolute;
     border: 1px solid #6eedd8;
     border-radius: 50%;
-    top: -0.125rem;
-    left: -0.125rem;
-    animation-name: pulse;
+    top: -0.15625rem;
+    left: -0.15625rem;
+    animation-name: pulse2;
     animation-duration: 2s;
-    animation-delay: 1s;
     animation-iteration-count: infinite;
-    animation-direction: alternate; }
+    /*animation-direction: alternate;*/ }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
-    opacity: 0.1; }
+    opacity: 0.7; }
   100% {
-    transform: scale(1.7);
-    opacity: 0.7; } }
+    transform: scale(1.2);
+    opacity: 0.25; } }
+
+@keyframes pulse2 {
+  0% {
+    transform: scale(1);
+    opacity: 0.7; }
+  100% {
+    transform: scale(1.6);
+    opacity: 0; } }
 
 /* ~~ Question Mark ~~ */
 .help {
