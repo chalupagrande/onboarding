@@ -86,10 +86,9 @@ var GuideFooter = function () {
     default = STRING: text for the default overview button
     skip = STRING: text to skip the tutorial
   }
-   element = wrapper to inject footer styles.
   */
 
-  function GuideFooter(element, page, opts) {
+  function GuideFooter(element, page) {
     _classCallCheck(this, GuideFooter);
 
     this._element = document.querySelector(element);
