@@ -22,6 +22,7 @@ var walkthrough = new Walkthrough({
 });
 
 var slideout = document.querySelector('.slideout');
+var slideoutNav = slideout.querySelector('.slideout__header__nav');
 var toggleSlide;
 
 (function () {
@@ -36,5 +37,11 @@ var toggleSlide;
       toggleSlide();
     });
     toggleSlide();
+
+    slideout.querySelector('.slideout__header__nav').addEventListener('click', function () {
+      walkthrough.hideGuide();
+      slideoutNav.style.opacity = 0;
+      slideoutNav.style.cursor = 'default';
+    });
   });
 })();

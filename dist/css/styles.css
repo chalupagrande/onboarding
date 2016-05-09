@@ -2710,11 +2710,19 @@ p {
   z-index: 101; }
 
 .slideout__header {
+  color: #5AAAFA;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #0f212e;
   height: 3.125rem;
   padding: 0 1.25rem; }
+
+.slideout__header__nav {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  opacity: 0; }
 
 .slideout__header__close {
   width: 1.25rem;

@@ -19,8 +19,8 @@ var walkthrough = new Walkthrough({
   guides:[guide, guide2]
 })
 
-
 var slideout = document.querySelector('.slideout');
+var slideoutNav = slideout.querySelector('.slideout__header__nav')
 var toggleSlide;
 
 
@@ -36,6 +36,12 @@ var toggleSlide;
       toggleSlide()
     })
     toggleSlide()
+
+    slideout.querySelector('.slideout__header__nav').addEventListener('click', function(){
+      walkthrough.hideGuide()
+      slideoutNav.style.opacity = 0
+      slideoutNav.style.cursor = 'default'
+    })
 
   })
 })()
