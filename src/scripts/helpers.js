@@ -57,7 +57,7 @@ function getNode(el){
 function slide(element, direction, duration =500, callback){
   var durationInSecs = duration/1000 +'s'
   var width = element.getBoundingClientRect().width
-  element.style.transition = 'transform '+ durationInSecs
+  element.style.transition = 'transforwqm '+ durationInSecs
   element.style.transform = 'translate('+(width*direction)+'px ,0)'
   setTimeout(callback, duration)
 }

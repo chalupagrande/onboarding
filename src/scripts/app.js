@@ -2,16 +2,12 @@
   Reposition Slideout Container on scroll
 */
 
-
-// var guideTag = new GuideTag('.monitoring')
-// var page = new GuidePage('.page')
-// var page = new GuidePage('.page.page2')
-
 var guide = new Guide({
   element: getNode('.guide[data-guide-name="monitoring"]'),
   pages: getNode('.pages').children,
-  tag: new GuideTag(getNode('.guide-tag[data-guide-name="monitoring"]'))
+  tag: new GuideTag(getNode('.guide-tag'))
 });
+
 var walkthrough = new Walkthrough({
   element: getNode('.walkthrough'),
   guides:[guide]
