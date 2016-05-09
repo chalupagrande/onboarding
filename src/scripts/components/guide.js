@@ -1,19 +1,21 @@
 class Guide{
-  constructor({tag, footer, pages = []}){
+  constructor({element, tag, pages = [], spy}){
 
     let self = this
-    let tagSpy = getTagSpy(self)
+    let pageSpy = getPageSpy(self)
     let footerSpy = getFooterSpy(self)
 
-
+    this._spy = spy
+    this._element = element
     this._currentPage = -1
     this._tag = tag
     this._dots = new Dots('.progress-dots', pages.length)
     this._pages = []
     this._footer = new GuideFooter('.guide-footer', {}, footerSpy)
+    this.name = this._element.getAttribute('data-guide-name')
 
     for(var i = 0; i < pages.length; i++){
-      this._pages.push( new GuidePage(pages[i], i, tagSpy))
+      this._pages.push( new GuidePage(pages[i], i, pageSpy))
     }
 
     this.next()
@@ -21,7 +23,8 @@ class Guide{
 
   next(){
     if(this._currentPage == this._pages.length -1 ){
-      toggleSlide()
+      this._tag.updateStatus(2)
+      this._spy()
       return
     }
     if(this._currentPage >= 0){
@@ -40,7 +43,7 @@ class Guide{
   }
   previous(){
     if(this._currentPage == 0 ){
-      toggleSlide()
+      this._spy()
       return
     }
     if(this._currentPage > 0){
@@ -57,6 +60,9 @@ class Guide{
     this._footer.render(this._currentPage, nextTitle)
     this._dots.previous()
   }
+  setSpy(spy){
+    this._spy = spy;
+  }
 }
 
 
@@ -65,16 +71,15 @@ class Guide{
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 //spies will be bound to self
 
-function getTagSpy(self){
-  var tagSpy = function(...args){
+function getPageSpy(self){
+  var pageSpy = function(...args){
     this.next.apply(this, args)
   }
-  return tagSpy.bind(self)
+  return pageSpy.bind(self)
 }
 
 function getFooterSpy(self){
   let footerSpy = function(direction){
-    console.log(this)
     direction == 'next' ? this.next() : this.previous()
   }
   return footerSpy.bind(self)

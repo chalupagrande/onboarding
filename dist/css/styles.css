@@ -2720,8 +2720,12 @@ p {
   width: 1.25rem;
   cursor: pointer; }
 
-/*
-Progress Dots
+/* Walkthrough
+~~~~~~~~~~~~~~~~~~~~~ */
+.walkthrough-header {
+  margin: 1.6875rem 2.5rem; }
+
+/* Progress Dots
 ~~~~~~~~~~~~~~~~~~~~~ */
 .progress-dots {
   display: flex;
@@ -2756,6 +2760,7 @@ Progress Dots
 .guide-tag {
   align-items: center;
   border-left: 0.5rem solid #5AAAFA;
+  cursor: pointer;
   display: flex;
   font-size: 0.875rem;
   margin: 1px 0;

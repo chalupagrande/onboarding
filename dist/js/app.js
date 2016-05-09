@@ -9,12 +9,17 @@
 // var page = new GuidePage('.page.page2')
 
 var guide = new Guide({
-  pages: getNode('.pages').children
+  element: getNode('.guide[data-guide-name="monitoring"]'),
+  pages: getNode('.pages').children,
+  tag: new GuideTag(getNode('.guide-tag[data-guide-name="monitoring"]'))
+});
+var walkthrough = new Walkthrough({
+  element: getNode('.walkthrough'),
+  guides: [guide]
 });
 
 var slideout = document.querySelector('.slideout');
 var toggleSlide;
-
 (function () {
   window.addEventListener('load', function () {
 

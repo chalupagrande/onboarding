@@ -201,7 +201,6 @@ var GuideTag = function () {
     this._element = getNode(element);
     this._status = status || 0;
     this._statusElement = this._element.querySelector('.js__status');
-    this._page = 0;
 
     this.updateStatus();
   }
@@ -222,18 +221,6 @@ var GuideTag = function () {
       this._element.classList;
       this._statusElement.innerHTML = '<span class="guide-tag__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status].toUpperCase() + '</span>';
     }
-  }, {
-    key: 'nextPage',
-    value: function nextPage() {
-      this._page += 1;
-      return this._page;
-    }
-  }, {
-    key: 'previousPage',
-    value: function previousPage() {
-      this._page -= 1;
-      return this._page;
-    }
   }]);
 
   return GuideTag;
@@ -241,25 +228,29 @@ var GuideTag = function () {
 
 var Guide = function () {
   function Guide(_ref) {
+    var element = _ref.element;
     var tag = _ref.tag;
-    var footer = _ref.footer;
     var _ref$pages = _ref.pages;
     var pages = _ref$pages === undefined ? [] : _ref$pages;
+    var spy = _ref.spy;
 
     _classCallCheck(this, Guide);
 
     var self = this;
-    var tagSpy = getTagSpy(self);
+    var pageSpy = getPageSpy(self);
     var footerSpy = getFooterSpy(self);
 
+    this._spy = spy;
+    this._element = element;
     this._currentPage = -1;
     this._tag = tag;
     this._dots = new Dots('.progress-dots', pages.length);
     this._pages = [];
     this._footer = new GuideFooter('.guide-footer', {}, footerSpy);
+    this.name = this._element.getAttribute('data-guide-name');
 
     for (var i = 0; i < pages.length; i++) {
-      this._pages.push(new GuidePage(pages[i], i, tagSpy));
+      this._pages.push(new GuidePage(pages[i], i, pageSpy));
     }
 
     this.next();
@@ -269,7 +260,8 @@ var Guide = function () {
     key: 'next',
     value: function next() {
       if (this._currentPage == this._pages.length - 1) {
-        toggleSlide();
+        this._tag.updateStatus(2);
+        this._spy();
         return;
       }
       if (this._currentPage >= 0) {
@@ -290,7 +282,7 @@ var Guide = function () {
     key: 'previous',
     value: function previous() {
       if (this._currentPage == 0) {
-        toggleSlide();
+        this._spy();
         return;
       }
       if (this._currentPage > 0) {
@@ -307,6 +299,11 @@ var Guide = function () {
       this._footer.render(this._currentPage, nextTitle);
       this._dots.previous();
     }
+  }, {
+    key: 'setSpy',
+    value: function setSpy(spy) {
+      this._spy = spy;
+    }
   }]);
 
   return Guide;
@@ -317,29 +314,82 @@ var Guide = function () {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 //spies will be bound to self
 
-function getTagSpy(self) {
-  var tagSpy = function tagSpy() {
+function getPageSpy(self) {
+  var pageSpy = function pageSpy() {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
     this.next.apply(this, args);
   };
-  return tagSpy.bind(self);
+  return pageSpy.bind(self);
 }
 
 function getFooterSpy(self) {
   var footerSpy = function footerSpy(direction) {
-    console.log(this);
     direction == 'next' ? this.next() : this.previous();
   };
   return footerSpy.bind(self);
 }
 
-var Walkthrough = function Walkthrough() {
-  var guides = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+var Walkthrough = function () {
+  function Walkthrough(_ref2) {
+    var element = _ref2.element;
+    var _ref2$guides = _ref2.guides;
+    var guides = _ref2$guides === undefined ? [] : _ref2$guides;
 
-  _classCallCheck(this, Walkthrough);
+    _classCallCheck(this, Walkthrough);
 
-  this._guides = guides;
-};
+    var self = this;
+    this._guides = guides;
+    this._element = element;
+    this._currentGuide;
+    this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children);
+
+    //add listeners to GuideTags
+    this._guideList.forEach(function (el) {
+      el.addEventListener('click', function () {
+        var targetGuide = this.querySelector('.guide-tag[data-guide-name]');
+        var guideName = targetGuide.getAttribute('data-guide-name');
+        self.showGuide(guideName);
+      });
+    });
+
+    //hide pages & set spy
+    var guideSpy = getGuideSpy(self);
+    this._guides.forEach(function (el) {
+      el._element.style.display = 'none';
+      el.setSpy(guideSpy);
+    });
+  }
+
+  _createClass(Walkthrough, [{
+    key: 'showGuide',
+    value: function showGuide(guideName) {
+      this._element.style.display = 'none';
+      var el = getNode('.guide[data-guide-name="' + guideName + '"]');
+      el.style.display = 'block';
+
+      this._currentGuide = guideName;
+    }
+  }, {
+    key: 'hideGuide',
+    value: function hideGuide() {
+      if (!this._currentGuide) return;
+      this._element.style.display = 'block';
+      var el = getNode('.guide[data-guide-name="' + this._currentGuide + '"]');
+      el.style.display = 'none';
+
+      this._currentGuide = undefined;
+    }
+  }]);
+
+  return Walkthrough;
+}();
+
+function getGuideSpy(self) {
+  var guideSpy = function guideSpy() {
+    this.hideGuide();
+  };
+  return guideSpy.bind(self);
+}

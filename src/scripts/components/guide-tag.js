@@ -10,7 +10,6 @@ class GuideTag{
     this._element       = getNode(element)
     this._status        = status || 0
     this._statusElement = this._element.querySelector('.js__status')
-    this._page          = 0
 
     this.updateStatus()
   }
@@ -27,14 +26,5 @@ class GuideTag{
     this._element.classList
     this._statusElement.innerHTML = '<span class="guide-tag__status__'+
                  removeSpaceMakeLowercase(stati[this._status])+'">'+stati[this._status].toUpperCase()+'</span>'
-  }
-
-  nextPage(){
-    this._page += 1
-    return this._page
-  }
-  previousPage(){
-    this._page -= 1
-    return this._page
   }
 }

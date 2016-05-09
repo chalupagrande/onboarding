@@ -77,10 +77,13 @@ $slideoutWidth: ems(305);
   cursor:pointer;
 }
 
+/* Walkthrough
+~~~~~~~~~~~~~~~~~~~~~ */
+.walkthrough-header{
+  margin:ems(27) ems(40);
+}
 
-
-/*
-Progress Dots
+/* Progress Dots
 ~~~~~~~~~~~~~~~~~~~~~ */
 .progress-dots {
   display: flex;
@@ -125,6 +128,7 @@ Progress Dots
 .guide-tag{
   align-items: center;
   border-left: ems(8) solid $bright-blue;
+  cursor: pointer;
   display: flex;
   font-size: ems(14);
   margin: 1px 0;

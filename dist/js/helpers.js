@@ -77,3 +77,7 @@ Function.prototype.papp = function () {
     return fn.apply(this, args.concat(slice.call(arguments)));
   };
 };
+
+function makeArray(arraLikeObject) {
+  return Array.prototype.slice.call(arraLikeObject);
+}
