@@ -2762,7 +2762,8 @@ p {
   border-left: 0.5rem solid #5AAAFA;
   cursor: pointer;
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 300;
   margin: 1px 0;
   min-height: 4.75rem;
   width: 100%; }
@@ -2777,28 +2778,35 @@ p {
   justify-content: space-between; }
 
 .guide-tag__content {
-  flex-flow: 4;
+  flex: 3;
   padding: 0 0.375rem 0 1.875rem; }
 
 .guide-tag__status {
   align-self: flex-start;
-  flex-flow: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
   font-size: 0.75rem;
-  margin-right: 0.3125rem; }
+  margin-right: 0.3125rem;
+  text-align: right;
+  text-wrap: none; }
   .guide-tag__status__new {
     align-items: flex-start;
     display: flex;
     line-height: 16px; }
     .guide-tag__status__new:before {
-      margin-right: 0.0625rem;
-      font-size: 3.125rem !important;
+      margin-right: 0.3125rem;
+      font-size: 1.25rem !important;
       content: '•';
       color: #FF5050; }
   .guide-tag__status__in_progress {
     color: #5AAAFA; }
 
 .guide-tag__title {
-  font-weight: bold; }
+  font-size: 0.875rem;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3125rem; }
 
 /*  Page
 ~~~~~~~~~~~~~~~~~~~~~ */

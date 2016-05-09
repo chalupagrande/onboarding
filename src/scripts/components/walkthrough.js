@@ -42,7 +42,6 @@ class Walkthrough{
 
 function getGuideSpy(self){
   let guideSpy = function(){
-    debugger;
     this.hideGuide()
   }
   return guideSpy.bind(self)

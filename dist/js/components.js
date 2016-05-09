@@ -216,10 +216,10 @@ var GuideTag = function () {
         return this._status;
       }
 
-      var stati = ['new', 'in progress', 'completed'];
+      var stati = ['New', 'In Progress', 'Completed'];
       this._status = status || 0;
       switchClass(this._element, stati, removeSpaceMakeLowercase(stati[this._status]));
-      this._statusElement.innerHTML = '<span class="guide-tag__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status].toUpperCase() + '</span>';
+      this._statusElement.innerHTML = '<span class="guide-tag__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status] + '</span>';
     }
   }]);
 
@@ -401,7 +401,6 @@ var Walkthrough = function () {
 
 function getGuideSpy(self) {
   var guideSpy = function guideSpy() {
-    debugger;
     this.hideGuide();
   };
   return guideSpy.bind(self);

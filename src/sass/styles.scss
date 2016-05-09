@@ -130,7 +130,8 @@ $slideoutWidth: ems(305);
   border-left: ems(8) solid $bright-blue;
   cursor: pointer;
   display: flex;
-  font-size: ems(14);
+  font-size: ems(12);
+  font-weight: 300;
   margin: 1px 0;
   min-height: ems(76);
   width: 100%;
@@ -148,22 +149,26 @@ $slideoutWidth: ems(305);
   justify-content: space-between;
 }
 .guide-tag__content {
-  flex-flow: 4;
+  flex: 3;
   padding: 0 ems(6) 0 ems(30);
 }
 .guide-tag__status {
   align-self: flex-start;
-  flex-flow: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
   font-size: ems(12);
   margin-right: ems(5);
+  text-align: right;
+  text-wrap: none;
 
   &__new {
     align-items: flex-start;
     display: flex;
     line-height: 16px; // I DONT KNOW WHY THIS WONT TAKE EMS
     &:before {
-      margin-right: ems(1);
-      font-size: ems(50) !important;
+      margin-right: ems(5);
+      font-size: ems(20) !important;
       content: '•';
       color: $red;
     };
@@ -174,7 +179,10 @@ $slideoutWidth: ems(305);
 
 }
 .guide-tag__title {
-  font-weight: bold;
+  font-size: ems(14);
+  display: block;
+  font-weight: 700;
+  margin-bottom: ems(5);
 }
 
 /*  Page
