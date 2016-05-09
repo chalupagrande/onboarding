@@ -3,14 +3,11 @@
 /* Page Specific Helpers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 function resizeContent() {
-  console.log('start');
   var n = getNode('.content');
   if (n.style.width && n.style.width.slice(0, -1) * 1 < 100) {
     n.style.width = '100%';
-    console.log('in');
     return;
   }
-  console.log('out');
   var contentWidth = n.getBoundingClientRect().width;
   var slideoutWidth = slideout.getBoundingClientRect().width;
   n.style.width = (1 - slideoutWidth / contentWidth) * 100 + '%';
