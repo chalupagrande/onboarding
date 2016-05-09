@@ -335,3 +335,11 @@ function getFooterSpy(self) {
   };
   return footerSpy.bind(self);
 }
+
+var Walkthrough = function Walkthrough() {
+  var guides = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+
+  _classCallCheck(this, Walkthrough);
+
+  this._guides = guides;
+};
