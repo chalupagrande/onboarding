@@ -134,6 +134,13 @@ $slideoutWidth: ems(305);
   margin: 1px 0;
   min-height: ems(76);
   width: 100%;
+
+  &.completed{
+    opacity:0.3;
+  }
+  &.in_progress{
+    opacity:0.6;
+  }
 }
 .guide-tag__wrap {
   align-items: baseline;

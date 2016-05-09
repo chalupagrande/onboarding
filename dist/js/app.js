@@ -10,13 +10,20 @@ var guide = new Guide({
   tag: new GuideTag(getNode('.guide-tag'))
 });
 
+var guide2 = new Guide({
+  element: getNode('.guide[data-guide-name="response"]'),
+  pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children,
+  tag: new GuideTag(getNode('.guide-tag[data-guide-name="response"]'))
+});
+
 var walkthrough = new Walkthrough({
   element: getNode('.walkthrough'),
-  guides: [guide]
+  guides: [guide, guide2]
 });
 
 var slideout = document.querySelector('.slideout');
 var toggleSlide;
+
 (function () {
   window.addEventListener('load', function () {
 
@@ -24,7 +31,10 @@ var toggleSlide;
 
     toggleSlide = getToggleSlideFunc(slideout, -1, 500, resizeContent);
     getNode('.js__guide-trigger').addEventListener('click', toggleSlide);
-    slideout.querySelector('.js__guide-trigger').addEventListener('click', toggleSlide);
+    slideout.querySelector('.js__guide-trigger').addEventListener('click', function () {
+      walkthrough.hideGuide();
+      toggleSlide();
+    });
     toggleSlide();
   });
 })();

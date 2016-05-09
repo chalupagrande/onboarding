@@ -11,7 +11,8 @@ class Walkthrough{
       el.addEventListener('click', function(){
         var targetGuide = this.querySelector('.guide-tag[data-guide-name]')
         var guideName = targetGuide.getAttribute('data-guide-name')
-        self.showGuide(guideName)
+        var g = getGuide(self._guides, guideName)
+        self.showGuide(g)
       })
     })
 
@@ -21,23 +22,19 @@ class Walkthrough{
       el._element.style.display = 'none'
       el.setSpy(guideSpy)
     })
-
-
   }
 
-  showGuide(guideName){
+  showGuide(guide){
     this._element.style.display = 'none'
-    var el = getNode('.guide[data-guide-name="'+guideName+'"]')
-    el.style.display = 'block'
+    guide.show()
 
-    this._currentGuide = guideName
+    this._currentGuide = guide
   }
 
   hideGuide(){
     if(!this._currentGuide) return;
+    this._currentGuide.hide()
     this._element.style.display = 'block'
-    var el = getNode('.guide[data-guide-name="'+this._currentGuide+'"]')
-    el.style.display = 'none'
 
     this._currentGuide = undefined;
   }
@@ -45,6 +42,7 @@ class Walkthrough{
 
 function getGuideSpy(self){
   let guideSpy = function(){
+    debugger;
     this.hideGuide()
   }
   return guideSpy.bind(self)

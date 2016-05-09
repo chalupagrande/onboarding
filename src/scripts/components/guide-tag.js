@@ -23,7 +23,7 @@ class GuideTag{
 
     const stati = ['new', 'in progress', 'completed']
     this._status = status || 0
-    this._element.classList
+    switchClass(this._element, stati, removeSpaceMakeLowercase(stati[this._status]))
     this._statusElement.innerHTML = '<span class="guide-tag__status__'+
                  removeSpaceMakeLowercase(stati[this._status])+'">'+stati[this._status].toUpperCase()+'</span>'
   }

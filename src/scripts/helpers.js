@@ -11,6 +11,11 @@ function resizeContent(){
   n.style.width = (1 - slideoutWidth / contentWidth)*100 +'%'
 }
 
+function getGuide(list, name){
+  for(var i = 0; i < list.length; i++){
+    if(list[i].name == name) return list[i]
+  }
+}
 
 /* Generic HELPERS
 ~~~~~~~~~~~~~~~~~~~~~*/
@@ -43,6 +48,10 @@ function hasClass(el, className){
 }
 
 function getNode(el){
+  if(!el){
+    debugger
+    throw Error('No arguments were provided')
+  }
   if(typeof el == 'string'){
     return document.querySelector(el)
   } else if (el.nodeType){
@@ -78,4 +87,21 @@ Function.prototype.papp = function () {
 
 function makeArray(arraLikeObject){
   return Array.prototype.slice.call(arraLikeObject)
+}
+
+function addClass(el, className){
+  if (el.classList){
+    el.classList.add(className);
+  }
+  else{
+    el.className += ' ' + className;
+  }
+}
+function switchClass(element, possibleClasses, desiredClass){
+  possibleClasses.forEach(function(klass){
+    if(hasClass(element, removeSpaceMakeLowercase(klass))){
+      toggleClass(element, removeSpaceMakeLowercase(klass))
+    }
+  })
+  addClass(element, desiredClass)
 }

@@ -9,9 +9,9 @@ class Guide{
     this._element = element
     this._currentPage = -1
     this._tag = tag
-    this._dots = new Dots('.progress-dots', pages.length)
+    this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length)
     this._pages = []
-    this._footer = new GuideFooter('.guide-footer', {}, footerSpy)
+    this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy)
     this.name = this._element.getAttribute('data-guide-name')
 
     for(var i = 0; i < pages.length; i++){
@@ -23,7 +23,6 @@ class Guide{
 
   next(){
     if(this._currentPage == this._pages.length -1 ){
-      this._tag.updateStatus(2)
       this._spy()
       return
     }
@@ -31,7 +30,6 @@ class Guide{
       var page = this._pages[this._currentPage]
       page.remove()
     }
-
     this._currentPage +=1
 
     var nextPage = this._pages[this._currentPage]
@@ -59,6 +57,17 @@ class Guide{
     nextPage.render()
     this._footer.render(this._currentPage, nextTitle)
     this._dots.previous()
+  }
+  hide(){
+    if(this._currentPage == this._pages.length -1 ){
+      this._tag.updateStatus(2)
+    }else{
+      this._tag.updateStatus(1)
+    }
+    this._element.style.display = 'none'
+  }
+  show(){
+    this._element.style.display = 'block'
   }
   setSpy(spy){
     this._spy = spy;
