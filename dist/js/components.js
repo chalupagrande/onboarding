@@ -276,6 +276,7 @@ var Guide = function () {
 
     this._spy = spy;
     this._element = element;
+    this._status = 0;
     this._currentPage = -1;
     this._tag = tag;
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length);
@@ -335,9 +336,9 @@ var Guide = function () {
     key: 'hide',
     value: function hide() {
       if (this._currentPage == this._pages.length - 1) {
-        this._tag.updateStatus(2);
+        this.status(2);
       } else {
-        this._tag.updateStatus(1);
+        this.status(1);
       }
       this._element.style.display = 'none';
     }
@@ -350,6 +351,13 @@ var Guide = function () {
     key: 'setSpy',
     value: function setSpy(spy) {
       this._spy = spy;
+    }
+  }, {
+    key: 'status',
+    value: function status(num) {
+      if (!num) return this._status;
+      this._tag.updateStatus(num);
+      this._status = num;
     }
   }]);
 
@@ -391,12 +399,14 @@ var Walkthrough = function () {
     var element = _ref2.element;
     var _ref2$guides = _ref2.guides;
     var guides = _ref2$guides === undefined ? [] : _ref2$guides;
+    var helpIcon = _ref2.helpIcon;
 
     _classCallCheck(this, Walkthrough);
 
     var self = this;
-    this._guides = guides;
     this._element = element;
+    this._guides = guides;
+    this._helpIcon = helpIcon;
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children);
 
@@ -427,6 +437,8 @@ var Walkthrough = function () {
       guide.show();
 
       this._currentGuide = guide;
+
+      this.findStatus();
     }
   }, {
     key: 'hideGuide',
@@ -439,6 +451,15 @@ var Walkthrough = function () {
       this._element.style.display = 'block';
 
       this._currentGuide = undefined;
+    }
+  }, {
+    key: 'findStatus',
+    value: function findStatus() {
+      for (var i = 0; i < this._guides.length; i++) {
+        if (this._guides[i].status() == 0) {
+          toggleClass(this._helpIcon, 'highlight');
+        }
+      }
     }
   }]);
 

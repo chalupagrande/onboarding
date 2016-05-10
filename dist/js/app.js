@@ -18,7 +18,8 @@ var guide2 = new Guide({
 
 var walkthrough = new Walkthrough({
   element: getNode('.walkthrough'),
-  guides: [guide, guide2]
+  guides: [guide, guide2],
+  helpIcon: document.querySelector('.help')
 });
 
 var slideout = document.querySelector('.slideout');

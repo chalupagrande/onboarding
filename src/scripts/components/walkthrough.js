@@ -1,8 +1,9 @@
 class Walkthrough{
-  constructor({element, guides = []}){
+  constructor({element, guides = [], helpIcon}){
     let self = this
-    this._guides = guides
     this._element = element
+    this._guides = guides
+    this._helpIcon = helpIcon
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children)
 
@@ -31,6 +32,8 @@ class Walkthrough{
     guide.show()
 
     this._currentGuide = guide
+
+    this.findStatus()
   }
 
   hideGuide(){
@@ -42,6 +45,13 @@ class Walkthrough{
     this._element.style.display = 'block'
 
     this._currentGuide = undefined;
+  }
+  findStatus(){
+    for(var i = 0; i < this._guides.length; i++){
+      if(this._guides[i].status() == 0){
+        toggleClass(this._helpIcon,'highlight')
+      }
+    }
   }
 }
 

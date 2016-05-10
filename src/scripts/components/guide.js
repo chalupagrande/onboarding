@@ -7,6 +7,7 @@ class Guide{
 
     this._spy = spy
     this._element = element
+    this._status = 0
     this._currentPage = -1
     this._tag = tag
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length)
@@ -60,9 +61,9 @@ class Guide{
   }
   hide(){
     if(this._currentPage == this._pages.length -1 ){
-      this._tag.updateStatus(2)
+      this.status(2)
     }else{
-      this._tag.updateStatus(1)
+      this.status(1)
     }
     this._element.style.display = 'none'
   }
@@ -71,6 +72,11 @@ class Guide{
   }
   setSpy(spy){
     this._spy = spy;
+  }
+  status(num){
+    if(!num) return this._status
+    this._tag.updateStatus(num)
+    this._status = num
   }
 }
 
