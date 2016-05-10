@@ -35,6 +35,9 @@ class Walkthrough{
 
   hideGuide(){
     if(!this._currentGuide) return;
+    slideoutNav.style.opacity = 0
+    slideoutNav.style.cursor = 'pointer'
+
     this._currentGuide.hide()
     this._element.style.display = 'block'
 

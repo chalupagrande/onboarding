@@ -36,7 +36,7 @@ class Guide{
     var nextTitle = nextPage ? nextPage.title : ''
 
     nextPage.render()
-    this._footer.render(this._currentPage, nextTitle)
+    this._footer.render(this._currentPage, this._pages.length, nextTitle)
     this._dots.next()
   }
   previous(){
@@ -55,7 +55,7 @@ class Guide{
     var nextTitle = nextPage ? nextPage.title : ''
 
     nextPage.render()
-    this._footer.render(this._currentPage, nextTitle)
+    this._footer.render(this._currentPage, this._pages.length, nextTitle)
     this._dots.previous()
   }
   hide(){
@@ -81,7 +81,7 @@ class Guide{
 //spies will be bound to self
 
 function getPageSpy(self){
-  var pageSpy = function(...args){
+  let pageSpy = function(...args){
     this.next.apply(this, args)
   }
   return pageSpy.bind(self)
@@ -89,7 +89,14 @@ function getPageSpy(self){
 
 function getFooterSpy(self){
   let footerSpy = function(direction){
-    direction == 'next' ? this.next() : this.previous()
+    // direction == 'next' ? this.next() : this.previous()
+    if(direction == 'next'){
+      this.next()
+    } else if('previous'){
+      this.previous()
+    } else if('done'){
+      this._spy()
+    }
   }
   return footerSpy.bind(self)
 }
