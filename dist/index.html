@@ -23,16 +23,16 @@
 
 <div class="slideout">
   <div class="slideout__header">
-    <div class="slideout__header__nav">
+    <div class="slideout__header__nav" tabindex="0" role="button">
       <img src="images/onboarding_arrow.svg" alt="Back Arrow"> Guides
     </div>
-    <img class="slideout__header__close js__guide-trigger" src="images/close-cancel-error_32.svg" alt="close">
+    <img class="slideout__header__close js__guide-trigger" src="images/close-cancel-error_32.svg" alt="close" tabindex="0" role="button">
   </div>
   <div class="walkthrough">
     <h1 class="h1 walkthrough-header">Guides</h1>
     <ul class="walkthrough__guides">
       <li>
-        <div class="guide-tag" data-guide-name="monitoring">
+        <div class="guide-tag" data-guide-name="monitoring" tabindex="0"  role="button">
           <div class="guide-tag__wrap">
             <div class="guide-tag__content">
               <span class="guide-tag__title">Welcome to Monitoring!</span>
@@ -45,7 +45,7 @@
         </div><!-- guide-tag -->
       </li>
       <li>
-        <div class="guide-tag" data-guide-name="response">
+        <div class="guide-tag" data-guide-name="response" tabindex="0" role="button">
           <div class="guide-tag__wrap">
             <div class="guide-tag__content">
               <span class="guide-tag__title">Response Time Graph</span>
@@ -240,7 +240,7 @@
         <button class="btn--secondary" type="button">Previous</button>
         <button class="btn" type="button">OK, Got It!</button>
       </div>
-      <p class="guide-footer__skip js__footer-skip">Skip this tutorial</p>
+      <p class="guide-footer__skip js__footer-skip" tabindex="0" role="button">Skip this tutorial</p>
     </div><!-- /page-footer -->
   </div>
 </div><!-- /slideout -->
