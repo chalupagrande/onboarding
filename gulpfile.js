@@ -1,8 +1,8 @@
-var gulp        = require('gulp'),
-    browserSync = require('browser-sync')
-    sass = require('gulp-sass'),
-    babel = require('gulp-babel'),
-    concat = require('gulp-concat')
+var babel = require('gulp-babel'),
+    browserSync = require('browser-sync'),
+    concat = require('gulp-concat'),
+    gulp = require('gulp'),
+    sass = require('gulp-sass');
 
 
 gulp.task('serve', ['process', 'compile'], function(){
@@ -21,7 +21,6 @@ gulp.task('components', function(){
   return gulp.src('src/scripts/components/*.js')
              .pipe(concat('components.js'))
              .pipe(babel({
-               presets:['es2015']
              }))
              .pipe(gulp.dest('./dist/js'))
              .pipe(browserSync.stream())

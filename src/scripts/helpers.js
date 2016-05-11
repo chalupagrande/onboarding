@@ -49,7 +49,6 @@ function hasClass(el, className){
 
 function getNode(el){
   if(!el){
-    debugger
     throw Error('No arguments were provided')
   }
   if(typeof el == 'string'){

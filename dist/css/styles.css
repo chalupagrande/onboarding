@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: 'IBM Helvetica';
   font-style: normal;
@@ -2662,79 +2661,68 @@ body {
   stroke-dashoffset: 40; }
 
 body {
-  font-size: 16px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-size: 16px; }
 
 .bluemix-header {
   position: static; }
 
-/*
-TYPOGRAPHY
-~~~~~~~~~~~~~~~~~ */
 .h1 {
+  display: block;
   font-size: 1.25rem;
-  font-weight: bold;
-  display: block; }
+  font-weight: bold; }
 
 p {
   font-size: 0.875rem;
   line-height: 20px; }
 
-/* Globals
-~~~~~~~~~~~~~~~~~~~~ */
 .content {
-  height: 100%;
+  background-color: #ff5050;
   display: flex;
-  justify-content: space-between;
-  background-color: #FF5050; }
+  height: 100%;
+  justify-content: space-between; }
 
 .components {
   display: flex;
   flex-flow: column nowrap; }
 
 .wrapper {
-  width: 100vw;
+  overflow-x: hidden;
   position: relative;
-  overflow-x: hidden; }
+  width: 100vw; }
 
-/* Slideout
-~~~~~~~~~~~~~~~~~~~ */
 .slideout {
-  width: 19.0625rem;
-  height: 100vh;
   background-color: #152934;
-  color: #ffffff;
+  color: #fff;
+  height: 100vh;
   position: absolute;
   right: -19.0625rem;
   top: 0;
+  width: 19.0625rem;
   z-index: 101; }
 
 .slideout__header {
-  color: #5AAAFA;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #0f212e;
+  color: #5aaafa;
+  display: flex;
   height: 3.125rem;
+  justify-content: space-between;
   padding: 0 1.25rem; }
 
 .slideout__header__nav {
-  display: flex;
   align-items: center;
   cursor: default;
+  display: flex;
   opacity: 0; }
 
 .slideout__header__close {
   width: 1.25rem;
   cursor: pointer; }
 
-/* Walkthrough
-~~~~~~~~~~~~~~~~~~~~~ */
 .walkthrough-header {
   margin: 1.6875rem 2.5rem; }
 
-/* Progress Dots
-~~~~~~~~~~~~~~~~~~~~~ */
 .progress-dots {
   display: flex;
   justify-content: center; }
@@ -2749,25 +2737,21 @@ p {
   width: 0.625rem;
   height: 0.625rem;
   border-radius: 50%;
-  border: 1px solid #5AAAFA;
-  transition: background-color 0.5s; }
+  border: 1px solid #5aaafa;
+  transition: background-color .5s; }
   .nav-dot.fill {
-    background-color: #5AAAFA; }
+    background-color: #5aaafa; }
   .nav-dot-divider {
     height: 0.0625rem;
     width: 0.625rem;
-    border-top: 1px solid #5AAAFA; }
+    border-top: 1px solid #5aaafa; }
 
-/* Guide
-~~~~~~~~~~~~~~~~~~~*/
 .guide {
   margin-top: 2.5rem; }
 
-/*  GuideTags
-~~~~~~~~~~~~~~~~~~~~~ */
 .guide-tag {
   align-items: center;
-  border-left: 0.5rem solid #5AAAFA;
+  border-left: 0.5rem solid #5aaafa;
   cursor: pointer;
   display: flex;
   font-size: 0.75rem;
@@ -2776,9 +2760,9 @@ p {
   min-height: 4.75rem;
   width: 100%; }
   .guide-tag.completed {
-    opacity: 0.3; }
+    opacity: .3; }
   .guide-tag.in_progress {
-    opacity: 0.6; }
+    opacity: .6; }
 
 .guide-tag__wrap {
   align-items: baseline;
@@ -2802,13 +2786,13 @@ p {
     align-items: flex-start;
     display: flex;
     line-height: 16px; }
-    .guide-tag__status__new:before {
-      margin-right: 0.3125rem;
+    .guide-tag__status__new::before {
+      color: #ff5050;
+      content: '\2022';
       font-size: 1.25rem !important;
-      content: '•';
-      color: #FF5050; }
+      margin-right: 0.3125rem; }
   .guide-tag__status__in_progress {
-    color: #5AAAFA; }
+    color: #5aaafa; }
 
 .guide-tag__title {
   font-size: 0.875rem;
@@ -2816,12 +2800,9 @@ p {
   font-weight: 700;
   margin-bottom: 0.3125rem; }
 
-/*  Page
-~~~~~~~~~~~~~~~~~~~~~ */
 .page {
-  position: relative;
-  margin: 2.5rem 2.5rem 0 2.5rem;
-  /* page specific highlighting */ }
+  margin: 2.5rem 2.5rem 0;
+  position: relative; }
   .page__item {
     margin-top: 2.5rem;
     display: flex;
@@ -2833,10 +2814,8 @@ p {
       height: 1.25rem; }
   .page .highlight {
     font-weight: bold;
-    color: #5AAAFA; }
+    color: #5aaafa; }
 
-/* Guide Footer
-~~~~~~~~~~~~~~~~~ */
 .guide-footer {
   width: 100%;
   height: 5.8125rem;
@@ -2854,10 +2833,9 @@ p {
   .guide-footer__skip {
     margin-top: 1rem; }
     .guide-footer__skip:hover {
-      text-decoration: underline;
-      cursor: pointer !important; }
+      cursor: pointer !important;
+      text-decoration: underline; }
 
-/*  ~~ Numbered Dots  ~~*/
 .numbered-dot {
   align-items: center;
   border-radius: 50%;
@@ -2873,58 +2851,52 @@ p {
   .numbered-dot.animate:before {
     width: 1.5625rem;
     height: 1.5625rem;
-    content: "";
+    content: '';
     position: absolute;
     border: 1px solid #6eedd8;
     border-radius: 50%;
     top: -0.15625rem;
     left: -0.15625rem;
-    animation-name: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate; }
+    animation: pulse 2s alternate infinite; }
   .numbered-dot.animate:after {
     width: 1.5625rem;
     height: 1.5625rem;
-    content: "";
+    content: '';
     position: absolute;
     border: 1px solid #6eedd8;
     border-radius: 50%;
     top: -0.15625rem;
     left: -0.15625rem;
-    animation-name: pulse2;
-    animation-duration: 2s;
-    animation-iteration-count: infinite; }
+    animation: pulse2 2s infinite; }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
-    opacity: 0.7; }
+    opacity: .7; }
   5% {
     transform: scale(1);
-    opacity: 0.7; }
+    opacity: .7; }
   60% {
     transform: scale(1.2);
-    opacity: 0.25; }
+    opacity: .25; }
   100% {
     transform: scale(1);
-    opacity: 0.7; } }
+    opacity: .7; } }
 
 @keyframes pulse2 {
   0% {
     transform: scale(1);
-    opacity: 0.7; }
+    opacity: .7; }
   100% {
     transform: scale(1.6);
     opacity: 0; } }
 
-/* ~~ Question Mark ~~ */
 .help {
   align-items: center;
   border-radius: 50%;
-  border: 0.125rem solid #5AAAFA;
+  border: 0.125rem solid #5aaafa;
   bottom: 1rem;
-  color: #5AAAFA;
+  color: #5aaafa;
   display: flex;
   font-size: 1.5rem;
   font-weight: bold;
@@ -2936,8 +2908,8 @@ p {
   width: 2.5rem;
   z-index: 100;
   cursor: pointer; }
-  .help.highlight:before {
-    background-color: #FF5050;
+  .help.highlight::before {
+    background-color: #ff5050;
     border-radius: 50%;
     content: '';
     height: 0.625rem;
@@ -2947,7 +2919,7 @@ p {
     width: 0.625rem; }
   .help:hover {
     animation-name: wiggle;
-    animation-duration: 0.5s;
+    animation-duration: .5s;
     animation-iteration-count: 1; }
 
 @keyframes wiggle {
@@ -2960,14 +2932,11 @@ p {
   100% {
     transform: rotate(0deg); } }
 
-/* IGNORE THESE...
-just for formating the compoenents at the bottom of the page
-~~~~~~~~~~~~~*/
 .temp-slideout {
   width: 19.0625rem;
   height: 200px;
   background-color: #152934;
-  color: #ffffff;
+  color: #fff;
   position: relative;
   right: 0;
   top: 0; }

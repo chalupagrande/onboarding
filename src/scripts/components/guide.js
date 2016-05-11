@@ -98,9 +98,9 @@ function getFooterSpy(self){
     // direction == 'next' ? this.next() : this.previous()
     if(direction == 'next'){
       this.next()
-    } else if('previous'){
+    } else if(direction == 'previous'){
       this.previous()
-    } else if('done'){
+    } else if(direction == 'done'){
       this._spy()
     }
   }

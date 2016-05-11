@@ -24,7 +24,6 @@ var slideout = document.querySelector('.slideout');
 var slideoutNav = slideout.querySelector('.slideout__header__nav')
 var toggleSlide;
 
-
 (()=>{
   window.addEventListener('load',function(){
 
