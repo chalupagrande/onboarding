@@ -21,6 +21,7 @@ gulp.task('components', function(){
   return gulp.src('src/scripts/components/*.js')
              .pipe(concat('components.js'))
              .pipe(babel({
+               presets:['es2015']
              }))
              .pipe(gulp.dest('./dist/js'))
              .pipe(browserSync.stream())
@@ -38,7 +39,7 @@ gulp.task('compile', ['components'],function(){
 gulp.task('process', function(){
   return gulp.src('src/sass/**/*.scss')
              .pipe(sass())
-             .pipe(concat('styles.css'))
+             .pipe(concat('onboarding.css'))
              .pipe(gulp.dest('./dist/css'))
              .pipe(browserSync.stream())
 })

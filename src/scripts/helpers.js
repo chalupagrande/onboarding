@@ -105,17 +105,6 @@ function switchClass(element, possibleClasses, desiredClass){
   addClass(element, desiredClass)
 }
 
-function createEvent(){
-  var event
-
-  if(window.CustomEvent){
-    event = new window.CustomEvent('click')
-  }
-
-  return event
-}
-
-
 //copied from Stack Overflow.....
 function fireEvent(node, eventName) {
     // Make sure we use the ownerDocument from the provided node to avoid cross-window problems

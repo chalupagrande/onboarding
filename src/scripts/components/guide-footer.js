@@ -12,8 +12,8 @@ class GuideFooter{
     let self = this
     this._spy = spy
     this._element = getNode(element)
-    this._skip = this._element.querySelector('.js__footer-skip')
-    this._buttons = this._element.querySelector('.js__footer-buttons')
+    this._skip = this._element.querySelector('.js-footer-skip')
+    this._buttons = this._element.querySelector('.js-footer-buttons')
     this._opts = {
                    prev : opts.prev || "Previous",
                    next : opts.next || "OK, got it!",

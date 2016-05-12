@@ -2699,7 +2699,8 @@ p {
   right: -19.0625rem;
   top: 0;
   width: 19.0625rem;
-  z-index: 101; }
+  z-index: 101;
+  overflow: hidden; }
 
 .slideout__header {
   align-items: center;

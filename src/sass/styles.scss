@@ -67,6 +67,7 @@ $slideout-width: ems(305);
   top: 0;
   width: $slideout-width;
   z-index: 101;
+  overflow: hidden;
 }
 
 .slideout__header {

@@ -30,8 +30,8 @@ var toggleSlide;
     /*  add listeners to toggle onboarding in and out.  */
 
     toggleSlide = getToggleSlideFunc(slideout, -1, 500, resizeContent)
-    getNode('.js__guide-trigger').addEventListener('click', toggleSlide)
-    slideout.querySelector('.js__guide-trigger').addEventListener('click', function(){
+    getNode('.js-guide-trigger').addEventListener('click', toggleSlide)
+    slideout.querySelector('.js-guide-trigger').addEventListener('click', function(){
       walkthrough.hideGuide()
       toggleSlide()
     })

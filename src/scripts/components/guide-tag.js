@@ -9,7 +9,7 @@ class GuideTag{
   constructor(element, status){
     this._element       = getNode(element)
     this._status        = status || 0
-    this._statusElement = this._element.querySelector('.js__status')
+    this._statusElement = this._element.querySelector('.js-status')
 
     this.updateStatus()
   }
