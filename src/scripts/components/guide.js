@@ -1,19 +1,21 @@
 class Guide{
-  constructor({element, tag, pages = [], spy}){
+  constructor({element, pages = [], spy}){
 
     let self = this
     let pageSpy = getPageSpy(self)
     let footerSpy = getFooterSpy(self)
+    let tagSpy = getTagSpy(self)
 
     this._spy = spy
     this._element = element
     this._status = 0
     this._currentPage = -1
-    this._tag = tag
+    this.name = this._element.getAttribute('data-guide-name')
+    this._tag = new GuideTag(getNode('.guide-tag[data-guide-name="'+this.name+'"]'), null, tagSpy)
+
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length)
     this._pages = []
     this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy)
-    this.name = this._element.getAttribute('data-guide-name')
 
     for(var i = 0; i < pages.length; i++){
       this._pages.push( new GuidePage(pages[i], i, pageSpy))
@@ -106,4 +108,11 @@ function getFooterSpy(self){
     }
   }
   return footerSpy.bind(self)
+}
+
+function getTagSpy(self){
+  let tagSpy = function(){
+    self._spy(self.name)
+  }
+  return tagSpy.bind(self)
 }

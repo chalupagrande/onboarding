@@ -4,14 +4,12 @@
 
 var guide = new Guide({
   element: getNode('.guide[data-guide-name="monitoring"]'),
-  pages: getNode('.pages').children,
-  tag: new GuideTag(getNode('.guide-tag'))
+  pages: getNode('.pages').children
 });
 
 var guide2 = new Guide({
   element: getNode('.guide[data-guide-name="response"]'),
-  pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children,
-  tag: new GuideTag(getNode('.guide-tag[data-guide-name="response"]'))
+  pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children
 })
 
 var walkthrough = new Walkthrough({
@@ -21,7 +19,7 @@ var walkthrough = new Walkthrough({
 })
 
 var slideout = document.querySelector('.slideout');
-var slideoutNav = slideout.querySelector('.slideout__header__nav')
+var slideoutNav = slideout.querySelector('.slideout__nav')
 var toggleSlide;
 
 (()=>{
@@ -37,7 +35,7 @@ var toggleSlide;
     })
     toggleSlide()
 
-    slideout.querySelector('.slideout__header__nav').addEventListener('click', function(){
+    slideout.querySelector('.slideout__nav').addEventListener('click', function(){
       walkthrough.hideGuide()
       slideoutNav.style.opacity = 0
       slideoutNav.style.cursor = 'default'

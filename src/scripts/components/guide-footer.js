@@ -47,6 +47,8 @@ class GuideFooter{
   buildButtons(style){
     var self = this
     var btn, btn2;
+
+    //first page
     if(style == 0){
       btn = document.createElement('button')
       btn.setAttribute('class','btn')
@@ -56,6 +58,8 @@ class GuideFooter{
         self._spy('next')
       })
       self._buttons.appendChild(btn)
+
+    //middle pages
     }else if(style == 1){
       btn = document.createElement('button')
       btn.setAttribute('class','btn--secondary')
@@ -78,6 +82,8 @@ class GuideFooter{
       })
 
       self._buttons.appendChild(btn2)
+
+    //last page
     } else if(style == 2){
       btn = document.createElement('button')
       btn.setAttribute('class','btn--secondary')

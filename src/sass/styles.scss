@@ -80,14 +80,14 @@ $slideout-width: ems(305);
   padding: 0 ems(20);
 }
 
-.slideout__header__nav {
+.slideout__nav {
   align-items: center;
   cursor: default;
   display: flex;
   opacity: 0;
 }
 
-.slideout__header__close {
+.slideout__close {
   width: ems(20);
   cursor: pointer;
 }

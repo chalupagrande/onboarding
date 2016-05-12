@@ -6,12 +6,19 @@ class GuideTag{
    1 = In Progress
    2 = Completed
   */
-  constructor(element, status){
+
+  constructor(element, status, spy){
+    let self = this
+    this._spy = spy
     this._element       = getNode(element)
     this._status        = status || 0
     this._statusElement = this._element.querySelector('.js-status')
 
     this.updateStatus()
+
+    this._element.addEventListener('click', ()=>{
+      self._spy()
+    })
   }
 
   // status is a number 0-2

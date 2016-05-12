@@ -7,16 +7,6 @@ class Walkthrough{
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children)
 
-    //add listeners to GuideTags
-    this._guideList.forEach(function(el){
-      el.addEventListener('click', function(){
-        var targetGuide = this.querySelector('.guide-tag[data-guide-name]')
-        var guideName = targetGuide.getAttribute('data-guide-name')
-        var g = getGuide(self._guides, guideName)
-        self.showGuide(g)
-      })
-    })
-
     //hide pages & set spy
     let guideSpy = getGuideSpy(self)
     this._guides.forEach(function(el){
@@ -26,6 +16,9 @@ class Walkthrough{
   }
 
   showGuide(guide){
+    if(typeof guide == 'string'){
+      guide = getGuide(this._guides, guide)
+    }
     slideoutNav.style.opacity = 1
     slideoutNav.style.cursor = 'pointer'
     this._element.style.display = 'none'
@@ -56,8 +49,12 @@ class Walkthrough{
 }
 
 function getGuideSpy(self){
-  let guideSpy = function(){
-    this.hideGuide()
+  let guideSpy = function(action){
+    if(action){
+      self.showGuide(action)
+    } else {
+      self.hideGuide()
+    }
   }
   return guideSpy.bind(self)
 }

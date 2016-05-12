@@ -136,6 +136,8 @@ var GuideFooter = function () {
     value: function buildButtons(style) {
       var self = this;
       var btn, btn2;
+
+      //first page
       if (style == 0) {
         btn = document.createElement('button');
         btn.setAttribute('class', 'btn');
@@ -145,51 +147,55 @@ var GuideFooter = function () {
           self._spy('next');
         });
         self._buttons.appendChild(btn);
+
+        //middle pages
       } else if (style == 1) {
-        btn = document.createElement('button');
-        btn.setAttribute('class', 'btn--secondary');
-        btn.setAttribute('type', 'button');
-        btn.innerText = self._opts.prev;
+          btn = document.createElement('button');
+          btn.setAttribute('class', 'btn--secondary');
+          btn.setAttribute('type', 'button');
+          btn.innerText = self._opts.prev;
 
-        btn.addEventListener('click', function () {
-          self._spy('previous');
-        });
+          btn.addEventListener('click', function () {
+            self._spy('previous');
+          });
 
-        self._buttons.appendChild(btn);
+          self._buttons.appendChild(btn);
 
-        btn2 = document.createElement('button');
-        btn2.setAttribute('class', 'btn');
-        btn2.setAttribute('type', 'button');
-        btn2.innerText = self._opts.next;
+          btn2 = document.createElement('button');
+          btn2.setAttribute('class', 'btn');
+          btn2.setAttribute('type', 'button');
+          btn2.innerText = self._opts.next;
 
-        btn2.addEventListener('click', function () {
-          self._spy('next');
-        });
+          btn2.addEventListener('click', function () {
+            self._spy('next');
+          });
 
-        self._buttons.appendChild(btn2);
-      } else if (style == 2) {
-        btn = document.createElement('button');
-        btn.setAttribute('class', 'btn--secondary');
-        btn.setAttribute('type', 'button');
-        btn.innerText = self._opts.prev;
+          self._buttons.appendChild(btn2);
 
-        btn.addEventListener('click', function () {
-          self._spy('previous');
-        });
+          //last page
+        } else if (style == 2) {
+            btn = document.createElement('button');
+            btn.setAttribute('class', 'btn--secondary');
+            btn.setAttribute('type', 'button');
+            btn.innerText = self._opts.prev;
 
-        self._buttons.appendChild(btn);
+            btn.addEventListener('click', function () {
+              self._spy('previous');
+            });
 
-        btn2 = document.createElement('button');
-        btn2.setAttribute('class', 'btn');
-        btn2.setAttribute('type', 'button');
-        btn2.innerText = self._opts.finished;
+            self._buttons.appendChild(btn);
 
-        btn2.addEventListener('click', function () {
-          self._spy('next');
-        });
+            btn2 = document.createElement('button');
+            btn2.setAttribute('class', 'btn');
+            btn2.setAttribute('type', 'button');
+            btn2.innerText = self._opts.finished;
 
-        self._buttons.appendChild(btn2);
-      }
+            btn2.addEventListener('click', function () {
+              self._spy('next');
+            });
+
+            self._buttons.appendChild(btn2);
+          }
     }
   }]);
 
@@ -230,14 +236,20 @@ var GuideTag = function () {
    2 = Completed
   */
 
-  function GuideTag(element, status) {
+  function GuideTag(element, status, spy) {
     _classCallCheck(this, GuideTag);
 
+    var self = this;
+    this._spy = spy;
     this._element = getNode(element);
     this._status = status || 0;
     this._statusElement = this._element.querySelector('.js-status');
 
     this.updateStatus();
+
+    this._element.addEventListener('click', function () {
+      self._spy();
+    });
   }
 
   // status is a number 0-2
@@ -264,7 +276,6 @@ var GuideTag = function () {
 var Guide = function () {
   function Guide(_ref) {
     var element = _ref.element;
-    var tag = _ref.tag;
     var _ref$pages = _ref.pages;
     var pages = _ref$pages === undefined ? [] : _ref$pages;
     var spy = _ref.spy;
@@ -274,16 +285,18 @@ var Guide = function () {
     var self = this;
     var pageSpy = getPageSpy(self);
     var footerSpy = getFooterSpy(self);
+    var tagSpy = getTagSpy(self);
 
     this._spy = spy;
     this._element = element;
     this._status = 0;
     this._currentPage = -1;
-    this._tag = tag;
+    this.name = this._element.getAttribute('data-guide-name');
+    this._tag = new GuideTag(getNode('.guide-tag[data-guide-name="' + this.name + '"]'), null, tagSpy);
+
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length);
     this._pages = [];
     this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy);
-    this.name = this._element.getAttribute('data-guide-name');
 
     for (var i = 0; i < pages.length; i++) {
       this._pages.push(new GuidePage(pages[i], i, pageSpy));
@@ -395,6 +408,13 @@ function getFooterSpy(self) {
   return footerSpy.bind(self);
 }
 
+function getTagSpy(self) {
+  var tagSpy = function tagSpy() {
+    self._spy(self.name);
+  };
+  return tagSpy.bind(self);
+}
+
 var Walkthrough = function () {
   function Walkthrough(_ref2) {
     var element = _ref2.element;
@@ -411,16 +431,6 @@ var Walkthrough = function () {
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children);
 
-    //add listeners to GuideTags
-    this._guideList.forEach(function (el) {
-      el.addEventListener('click', function () {
-        var targetGuide = this.querySelector('.guide-tag[data-guide-name]');
-        var guideName = targetGuide.getAttribute('data-guide-name');
-        var g = getGuide(self._guides, guideName);
-        self.showGuide(g);
-      });
-    });
-
     //hide pages & set spy
     var guideSpy = getGuideSpy(self);
     this._guides.forEach(function (el) {
@@ -432,6 +442,9 @@ var Walkthrough = function () {
   _createClass(Walkthrough, [{
     key: 'showGuide',
     value: function showGuide(guide) {
+      if (typeof guide == 'string') {
+        guide = getGuide(this._guides, guide);
+      }
       slideoutNav.style.opacity = 1;
       slideoutNav.style.cursor = 'pointer';
       this._element.style.display = 'none';
@@ -468,8 +481,12 @@ var Walkthrough = function () {
 }();
 
 function getGuideSpy(self) {
-  var guideSpy = function guideSpy() {
-    this.hideGuide();
+  var guideSpy = function guideSpy(action) {
+    if (action) {
+      self.showGuide(action);
+    } else {
+      self.hideGuide();
+    }
   };
   return guideSpy.bind(self);
 }
