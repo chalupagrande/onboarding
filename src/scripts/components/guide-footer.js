@@ -12,8 +12,8 @@ class GuideFooter{
     let self = this
     this._spy = spy
     this._element = getNode(element)
-    this._skip = this._element.querySelector('.js__footer-skip')
-    this._buttons = this._element.querySelector('.js__footer-buttons')
+    this._skip = this._element.querySelector('.js-footer-skip')
+    this._buttons = this._element.querySelector('.js-footer-buttons')
     this._opts = {
                    prev : opts.prev || "Previous",
                    next : opts.next || "OK, got it!",
@@ -46,8 +46,9 @@ class GuideFooter{
 
   buildButtons(style){
     var self = this
+    var btn, btn2;
     if(style == 0){
-      var btn = document.createElement('button')
+      btn = document.createElement('button')
       btn.setAttribute('class','btn')
       btn.setAttribute('type','button')
       btn.innerText = self._opts.default
@@ -56,7 +57,7 @@ class GuideFooter{
       })
       self._buttons.appendChild(btn)
     }else if(style == 1){
-      var btn = document.createElement('button')
+      btn = document.createElement('button')
       btn.setAttribute('class','btn--secondary')
       btn.setAttribute('type','button')
       btn.innerText = self._opts.prev
@@ -67,7 +68,7 @@ class GuideFooter{
 
       self._buttons.appendChild(btn)
 
-      var btn2 = document.createElement('button')
+      btn2 = document.createElement('button')
       btn2.setAttribute('class','btn')
       btn2.setAttribute('type','button')
       btn2.innerText = self._opts.next
@@ -78,7 +79,7 @@ class GuideFooter{
 
       self._buttons.appendChild(btn2)
     } else if(style == 2){
-      var btn = document.createElement('button')
+      btn = document.createElement('button')
       btn.setAttribute('class','btn--secondary')
       btn.setAttribute('type','button')
       btn.innerText = self._opts.prev
@@ -89,7 +90,7 @@ class GuideFooter{
 
       self._buttons.appendChild(btn)
 
-      var btn2 = document.createElement('button')
+      btn2 = document.createElement('button')
       btn2.setAttribute('class','btn')
       btn2.setAttribute('type','button')
       btn2.innerText = self._opts.finished

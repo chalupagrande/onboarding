@@ -1,8 +1,8 @@
-var gulp        = require('gulp'),
-    browserSync = require('browser-sync')
-    sass = require('gulp-sass'),
-    babel = require('gulp-babel'),
-    concat = require('gulp-concat')
+var babel = require('gulp-babel'),
+    browserSync = require('browser-sync'),
+    concat = require('gulp-concat'),
+    gulp = require('gulp'),
+    sass = require('gulp-sass');
 
 
 gulp.task('serve', ['process', 'compile'], function(){
@@ -39,7 +39,7 @@ gulp.task('compile', ['components'],function(){
 gulp.task('process', function(){
   return gulp.src('src/sass/**/*.scss')
              .pipe(sass())
-             .pipe(concat('styles.css'))
+             .pipe(concat('onboarding.css'))
              .pipe(gulp.dest('./dist/css'))
              .pipe(browserSync.stream())
 })

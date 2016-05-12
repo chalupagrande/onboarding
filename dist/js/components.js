@@ -98,8 +98,8 @@ var GuideFooter = function () {
     var self = this;
     this._spy = spy;
     this._element = getNode(element);
-    this._skip = this._element.querySelector('.js__footer-skip');
-    this._buttons = this._element.querySelector('.js__footer-buttons');
+    this._skip = this._element.querySelector('.js-footer-skip');
+    this._buttons = this._element.querySelector('.js-footer-buttons');
     this._opts = {
       prev: opts.prev || "Previous",
       next: opts.next || "OK, got it!",
@@ -135,8 +135,9 @@ var GuideFooter = function () {
     key: 'buildButtons',
     value: function buildButtons(style) {
       var self = this;
+      var btn, btn2;
       if (style == 0) {
-        var btn = document.createElement('button');
+        btn = document.createElement('button');
         btn.setAttribute('class', 'btn');
         btn.setAttribute('type', 'button');
         btn.innerText = self._opts.default;
@@ -145,7 +146,7 @@ var GuideFooter = function () {
         });
         self._buttons.appendChild(btn);
       } else if (style == 1) {
-        var btn = document.createElement('button');
+        btn = document.createElement('button');
         btn.setAttribute('class', 'btn--secondary');
         btn.setAttribute('type', 'button');
         btn.innerText = self._opts.prev;
@@ -156,7 +157,7 @@ var GuideFooter = function () {
 
         self._buttons.appendChild(btn);
 
-        var btn2 = document.createElement('button');
+        btn2 = document.createElement('button');
         btn2.setAttribute('class', 'btn');
         btn2.setAttribute('type', 'button');
         btn2.innerText = self._opts.next;
@@ -167,7 +168,7 @@ var GuideFooter = function () {
 
         self._buttons.appendChild(btn2);
       } else if (style == 2) {
-        var btn = document.createElement('button');
+        btn = document.createElement('button');
         btn.setAttribute('class', 'btn--secondary');
         btn.setAttribute('type', 'button');
         btn.innerText = self._opts.prev;
@@ -178,7 +179,7 @@ var GuideFooter = function () {
 
         self._buttons.appendChild(btn);
 
-        var btn2 = document.createElement('button');
+        btn2 = document.createElement('button');
         btn2.setAttribute('class', 'btn');
         btn2.setAttribute('type', 'button');
         btn2.innerText = self._opts.finished;
@@ -234,7 +235,7 @@ var GuideTag = function () {
 
     this._element = getNode(element);
     this._status = status || 0;
-    this._statusElement = this._element.querySelector('.js__status');
+    this._statusElement = this._element.querySelector('.js-status');
 
     this.updateStatus();
   }
@@ -305,7 +306,7 @@ var Guide = function () {
       this._currentPage += 1;
 
       var nextPage = this._pages[this._currentPage];
-      var nextTitle = nextPage ? nextPage.title : '';
+      var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
 
       nextPage.render();
       this._footer.render(this._currentPage, this._pages.length, nextTitle);
@@ -385,9 +386,9 @@ function getFooterSpy(self) {
     // direction == 'next' ? this.next() : this.previous()
     if (direction == 'next') {
       this.next();
-    } else if ('previous') {
+    } else if (direction == 'previous') {
       this.previous();
-    } else if ('done') {
+    } else if (direction == 'done') {
       this._spy();
     }
   };

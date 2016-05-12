@@ -34,7 +34,8 @@ class Guide{
     this._currentPage +=1
 
     var nextPage = this._pages[this._currentPage]
-    var nextTitle = nextPage ? nextPage.title : ''
+    var nextTitle = this._pages[this._currentPage +1] ? this._pages[this._currentPage+1].title : '';
+
 
     nextPage.render()
     this._footer.render(this._currentPage, this._pages.length, nextTitle)
@@ -98,9 +99,9 @@ function getFooterSpy(self){
     // direction == 'next' ? this.next() : this.previous()
     if(direction == 'next'){
       this.next()
-    } else if('previous'){
+    } else if(direction == 'previous'){
       this.previous()
-    } else if('done'){
+    } else if(direction == 'done'){
       this._spy()
     }
   }

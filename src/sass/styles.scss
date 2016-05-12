@@ -1,102 +1,110 @@
 @import 'bower_components/bluemix-components/styles';
 @import 'functions';
+
 $browser-context: 16px;
 $dark-blue: #152934;
 $darker-blue: #0f212e;
-$bright-blue: #5AAAFA;
-$light-font: #ffffff;
+$bright-blue: #5aaafa;
+$light-font: #fff;
 $teal: #6eedd8;
-$red: #FF5050;
+$red: #ff5050;
 
 body {
-  font-size: $browser-context;
   box-sizing: border-box;
+  font-size: $browser-context;
 }
 
 .bluemix-header {
   position: static;
 }
 
-/*
-TYPOGRAPHY
-~~~~~~~~~~~~~~~~~ */
+//TYPOGRAPHY
+//~~~~~~~~~~~~~~~~~
 
 .h1 {
+  display: block;
   font-size: ems(20);
   font-weight: bold;
-  display: block;
 }
+
 p {
   font-size: ems(14);
   line-height: 20px;
 }
-/* Globals
-~~~~~~~~~~~~~~~~~~~~ */
+
+// Globals
+//~~~~~~~~~~~~~~~~~~~~
+
 .content {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
   background-color: $red;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
 }
 
-.components{
+.components {
   display: flex;
   flex-flow: column nowrap;
 }
-.wrapper{
-  width: 100vw;
-  position: relative;
+
+.wrapper {
   overflow-x: hidden;
+  position: relative;
+  width: 100vw;
 }
 
+// Slideout
+// ~~~~~~~~~~~~~~~~~~~
 
-/* Slideout
-~~~~~~~~~~~~~~~~~~~ */
-$slideoutWidth: ems(305);
+$slideout-width: ems(305);
 
 .slideout {
-  width: $slideoutWidth;
-  height: 100vh;
   background-color: $dark-blue;
   color: $light-font;
+  height: 100vh;
   position: absolute;
-  right: -$slideoutWidth;
+  right: -$slideout-width;
   top: 0;
+  width: $slideout-width;
   z-index: 101;
+  overflow: hidden;
 }
 
 .slideout__header {
-  color: $bright-blue;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: $darker-blue;
+  color: $bright-blue;
+  display: flex;
   height: ems(50);
+  justify-content: space-between;
   padding: 0 ems(20);
 }
-.slideout__header__nav{
-  display:flex;
+
+.slideout__header__nav {
   align-items: center;
   cursor: default;
+  display: flex;
   opacity: 0;
 }
+
 .slideout__header__close {
   width: ems(20);
   cursor: pointer;
 }
 
-/* Walkthrough
-~~~~~~~~~~~~~~~~~~~~~ */
-.walkthrough-header{
+// Walkthrough
+// ~~~~~~~~~~~~~~~~~~~~~
+.walkthrough-header {
   margin: ems(27) ems(40);
 }
 
-/* Progress Dots
-~~~~~~~~~~~~~~~~~~~~~ */
+// Progress Dots
+// ~~~~~~~~~~~~~~~~~~~~~
 .progress-dots {
   display: flex;
   justify-content: center;
 }
+
 .progress-dots__list {
   display: flex;
   align-items: center;
@@ -111,7 +119,7 @@ $slideoutWidth: ems(305);
   height: ems(10);
   border-radius: 50%;
   border: 1px solid $bright-blue;
-  transition: background-color 0.5s;
+  transition: background-color .5s;
 
   &.fill {
     background-color: $bright-blue;
@@ -123,17 +131,16 @@ $slideoutWidth: ems(305);
     border-top: 1px solid $bright-blue;
   }
 }
-/* Guide
-~~~~~~~~~~~~~~~~~~~*/
-.guide{
+
+// Guide
+// ~~~~~~~~~~~~~~~~~~~
+.guide {
   margin-top: ems(40);
 }
 
-
-
-/*  GuideTags
-~~~~~~~~~~~~~~~~~~~~~ */
-.guide-tag{
+// GuideTags
+// ~~~~~~~~~~~~~~~~~~~~~
+.guide-tag {
   align-items: center;
   border-left: ems(8) solid $bright-blue;
   cursor: pointer;
@@ -144,22 +151,26 @@ $slideoutWidth: ems(305);
   min-height: ems(76);
   width: 100%;
 
-  &.completed{
-    opacity: 0.3;
+  &.completed {
+    opacity: .3;
   }
-  &.in_progress{
-    opacity: 0.6;
+
+  &.in_progress {
+    opacity: .6;
   }
 }
+
 .guide-tag__wrap {
   align-items: baseline;
   display: flex;
   justify-content: space-between;
 }
+
 .guide-tag__content {
   flex: 3;
   padding: 0 ems(6) 0 ems(30);
 }
+
 .guide-tag__status {
   align-self: flex-start;
   display: flex;
@@ -173,19 +184,22 @@ $slideoutWidth: ems(305);
   &__new {
     align-items: flex-start;
     display: flex;
-    line-height: 16px; // I DONT KNOW WHY THIS WONT TAKE EMS
-    &:before {
-      margin-right: ems(5);
-      font-size: ems(20) !important;
-      content: '•';
+    line-height: 16px;
+
+    // I DONT KNOW WHY THIS WONT TAKE EMS
+    &::before {
       color: $red;
-    };
+      content: '\2022';
+      font-size: ems(20) !important;
+      margin-right: ems(5);
+    }
   }
+
   &__in_progress {
     color: $bright-blue;
   }
-
 }
+
 .guide-tag__title {
   font-size: ems(14);
   display: block;
@@ -193,11 +207,12 @@ $slideoutWidth: ems(305);
   margin-bottom: ems(5);
 }
 
-/*  Page
-~~~~~~~~~~~~~~~~~~~~~ */
-.page{
+// Page
+// ~~~~~~~~~~~~~~~~~~~~~
+
+.page {
+  margin: ems(40) ems(40) 0;
   position: relative;
-  margin: ems(40) ems(40) 0 ems(40);
 
   &__item {
     margin-top: ems(40);
@@ -205,22 +220,23 @@ $slideoutWidth: ems(305);
     flex-flow: row nowrap;
     align-items: flex-start;
 
-    &__icon{
+    &__icon {
       margin: ems(4) ems(20) 0 0;
       width: ems(20);
       height: ems(20);
     }
   }
 
-  /* page specific highlighting */
+  // page specific highlighting
   & .highlight {
     font-weight: bold;
     color: $bright-blue;
   }
 }
 
-/* Guide Footer
-~~~~~~~~~~~~~~~~~ */
+// Guide Footer
+// ~~~~~~~~~~~~~~~~~
+
 .guide-footer {
   width: 100%;
   height: ems(93);
@@ -228,7 +244,7 @@ $slideoutWidth: ems(305);
   bottom: 0;
   text-align: center;
 
-  &__buttons{
+  &__buttons {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -241,20 +257,21 @@ $slideoutWidth: ems(305);
       }
     }
   }
-  &__skip{
-    margin-top:ems(16);
+
+  &__skip {
+    margin-top: ems(16);
 
     &:hover {
-      text-decoration: underline;
       cursor: pointer !important;
+      text-decoration: underline;
     }
   }
 }
 
-  /*  ~~ Numbered Dots  ~~*/
-$size:25;
-$centerRatio: $size * -0.1;
-$fontSize: $size * 0.7;
+//  ~~ Numbered Dots  ~~
+$size: 25;
+$center-ratio: $size * -0.1;
+$font-size: $size * 0.7;
 
 .numbered-dot {
   align-items: center;
@@ -262,79 +279,76 @@ $fontSize: $size * 0.7;
   border: 1px solid $teal;
   color: $teal;
   display: flex;
-  font-size: ems($fontSize);
+  font-size: ems($font-size);
   justify-content: center;
   min-height: ems($size);
   min-width: ems($size);
   text-align: center;
   position: relative;
 
-
   &.animate {
-    &:before{
+    &:before {
       width: ems($size);
       height: ems($size);
-      content: "";
+      content: '';
       position: absolute;
       border: 1px solid $teal;
       border-radius: 50%;
-      top: ems($centerRatio);
-      left: ems($centerRatio);
+      top: ems($center-ratio);
+      left: ems($center-ratio);
+      animation: pulse 2s alternate infinite;
+    }
 
-      animation-name: pulse;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-
-    };
-    &:after{
+    &:after {
       width: ems($size);
       height: ems($size);
-      content: "";
+      content: '';
       position: absolute;
       border: 1px solid $teal;
       border-radius: 50%;
-      top: ems($centerRatio);
-      left: ems($centerRatio);
-
-      animation-name: pulse2;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-    };
+      top: ems($center-ratio);
+      left: ems($center-ratio);
+      animation: pulse2 2s infinite;
+    }
   }
 }
 
 @keyframes pulse {
-  0%   {
-          transform: scale(1);
-          opacity: 0.7;
-        };
-  5%   {
-          transform: scale(1);
-          opacity: 0.7;
-        };
+  0% {
+    transform: scale(1);
+    opacity: .7;
+  }
+
+  5% {
+    transform: scale(1);
+    opacity: .7;
+  }
+
   60% {
-          transform: scale(1.2);
-          opacity: 0.25;
-        };
-  100%   {
-          transform: scale(1);
-          opacity: 0.7;
-        };
-}
-@keyframes pulse2 {
-  0%   {
-          transform: scale(1);
-          opacity: 0.7;
-        };
+    transform: scale(1.2);
+    opacity: .25;
+  }
+
   100% {
-          transform: scale(1.6);
-          opacity: 0;
-        };
+    transform: scale(1);
+    opacity: .7;
+  }
 }
 
-/* ~~ Question Mark ~~ */
-.help{
+@keyframes pulse2 {
+  0% {
+    transform: scale(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+// ~~ Question Mark ~~
+.help {
   align-items: center;
   border-radius: 50%;
   border: ems(2) solid $bright-blue;
@@ -352,8 +366,8 @@ $fontSize: $size * 0.7;
   z-index: 100;
   cursor: pointer;
 
-  &.highlight{
-    &:before{
+  &.highlight {
+    &::before {
       background-color: $red;
       border-radius: 50%;
       content: '';
@@ -364,25 +378,36 @@ $fontSize: $size * 0.7;
       width: ems(10);
     }
   }
-  &:hover{
+
+  &:hover {
     animation-name: wiggle;
-    animation-duration: 0.5s;
+    animation-duration: .5s;
     animation-iteration-count: 1;
-  };
-}
-@keyframes wiggle{
-  0%{ transform: rotate(0deg); };
-  25%{ transform: rotate(-15deg); }
-  75%{ transform: rotate(15deg); }
-  100%{ transform: rotate(0deg); }
+  }
 }
 
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
 
+  25% {
+    transform: rotate(-15deg);
+  }
 
-/* IGNORE THESE...
-just for formating the compoenents at the bottom of the page
-~~~~~~~~~~~~~*/
-.temp-slideout{
+  75% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+// IGNORE THESE...
+// just for formating the compoenents at the bottom of the page
+// ~~~~~~~~~~~~~
+.temp-slideout {
   width: ems(305);
   height: 200px;
   background-color: $dark-blue;

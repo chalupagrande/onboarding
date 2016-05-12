@@ -24,15 +24,14 @@ var slideout = document.querySelector('.slideout');
 var slideoutNav = slideout.querySelector('.slideout__header__nav')
 var toggleSlide;
 
-
 (()=>{
   window.addEventListener('load',function(){
 
     /*  add listeners to toggle onboarding in and out.  */
 
     toggleSlide = getToggleSlideFunc(slideout, -1, 500, resizeContent)
-    getNode('.js__guide-trigger').addEventListener('click', toggleSlide)
-    slideout.querySelector('.js__guide-trigger').addEventListener('click', function(){
+    getNode('.js-guide-trigger').addEventListener('click', toggleSlide)
+    slideout.querySelector('.js-guide-trigger').addEventListener('click', function(){
       walkthrough.hideGuide()
       toggleSlide()
     })
@@ -45,4 +44,17 @@ var toggleSlide;
     })
 
   })
-})()
+})();
+
+(()=>{
+  var buttonNavs = document.querySelectorAll('[role="button"]')
+    makeArray(buttonNavs).forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      var code = e.which
+      // 13 = Return, 32 = Space
+      if((code == 13) || (code == 32)){
+        fireEvent(this, 'click')
+      }
+    })
+  })
+})();

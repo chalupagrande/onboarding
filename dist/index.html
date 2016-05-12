@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Guided Walkthrough</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/onboarding.css">
 </head>
 <body>
 <div class="wrapper">
@@ -15,24 +15,27 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente architecto veritatis cumque perferendis officia tenetur consectetur velit, eaque nulla ipsam! Totam odit dignissimos aliquam vitae itaque, commodi quis fuga nostrum.</p>
   </div><!-- /content -->
   <!-- Guided walkthrough tray -->
-  <div class="help highlight js__guide-trigger">?</div>
+  <div class="help highlight js-guide-trigger">?</div>
 </div><!-- /wrapper -->
 
 
 <div class="slideout">
   <div class="slideout__header">
-    <div class="slideout__header__nav">
+    <div class="slideout__header__nav" tabindex="0" role="button">
       <img src="images/onboarding_arrow.svg" alt="Back Arrow"> Guides
     </div>
-    <img class="slideout__header__close js__guide-trigger" src="images/close-cancel-error_32.svg" alt="close">
+    <img class="slideout__header__close js-guide-trigger" src="images/close-cancel-error_32.svg" alt="close" tabindex="0" role="button">
   </div>
   <div class="walkthrough">
     <h1 class="h1 walkthrough-header">Guides</h1>
     <ul class="walkthrough__guides">
       <li>
-        <div class="guide-tag" data-guide-name="monitoring">
+        <div class="guide-tag" data-guide-name="monitoring" tabindex="0"  role="button">
           <div class="guide-tag__wrap">
             <div class="guide-tag__content">
               <span class="guide-tag__title">Welcome to Monitoring!</span>
@@ -40,12 +43,12 @@
                   Get the run down of how to make the most monitoring.
               </p>
             </div>
-            <div class="guide-tag__status js__status"></div>
+            <div class="guide-tag__status js-status"></div>
           </div>
         </div><!-- guide-tag -->
       </li>
       <li>
-        <div class="guide-tag" data-guide-name="response">
+        <div class="guide-tag" data-guide-name="response" tabindex="0" role="button">
           <div class="guide-tag__wrap">
             <div class="guide-tag__content">
               <span class="guide-tag__title">Response Time Graph</span>
@@ -53,7 +56,7 @@
                   Learn what makes the response time graph baller.
               </p>
             </div>
-            <div class="guide-tag__status js__status"></div>
+            <div class="guide-tag__status js-status"></div>
           </div>
         </div><!-- guide-tag -->
       </li>
@@ -94,16 +97,16 @@
             </p>
           </div>
           <div class="page__item">
-            <div class="page__item__icon numbered-dot">1</div>
-            <p> This map displays where alerts are coming from. Each location will show you the number of alerts, their severity and if the location is available or unavailable. (pop severity, unavailable legend.)</p>
+            <div class="page__item__icon numbered-dot animate">1</div>
+            <p>This map displays where alerts are coming from. Each location will show you the number of alerts, their severity and if the location is available or unavailable.</p>
           </div>
           <div class="page__item">
             <div class="page__item__icon numbered-dot">2</div>
-            <p>When you have alerts on the map, clicking on a location will filter the table below.</p>
+            <p>When you start seeing alerts, click on a location on the map to filter the table below.</p>
           </div>
           <div class="page__item">
             <div class="page__item__icon numbered-dot">3</div>
-            <p> From here, you can go to a Breakdown page to get contextual details about each alert. (screenshot of Breakdown link).</p>
+            <p>From here, you can go to a Breakdown page to get contextual details about an alert.</p>
           </div>
         </div><!-- /page -->
       </li>
@@ -133,7 +136,7 @@
           </div>
           <div class="page__item">
             <div class="page__item__icon numbered-dot">1</div>
-            <p> Track Bluemix activities like: create, edit, delete, restage, etc. You’ll be able to see them on the table and correlate them in your response time and availability graphs.</p>
+            <p>Track your team’s Bluemix activities. You’ll be able to see them on the table and correlate them in your response and availability graphs.</p>
           </div>
         </div><!-- /page -->
       </li>
@@ -150,7 +153,7 @@
           </div>
           <div class="page__item">
             <div class="page__item__icon numbered-dot">2</div>
-            <p>Use the time slider to adjust data to a specific time.</p>
+            <p>Use the time slider to see data in your desired time range.</p>
           </div>
         </div><!-- /page -->
       </li>
@@ -207,11 +210,11 @@
 
 
     <div class="guide-footer">
-      <div class="guide-footer__buttons js__footer-buttons">
+      <div class="guide-footer__buttons js-footer-buttons">
         <button class="btn--secondary" type="button">Previous</button>
         <button class="btn" type="button">OK, Got It!</button>
       </div>
-      <p class="guide-footer__skip js__footer-skip">Skip this tutorial</p>
+      <p class="guide-footer__skip js-footer-skip">Skip this tutorial</p>
     </div><!-- /page-footer -->
   </div><!-- /guide -->
   <div class="guide" data-guide-name="response">
@@ -236,11 +239,11 @@
       </li>
     </ul>
     <div class="guide-footer">
-      <div class="guide-footer__buttons js__footer-buttons">
+      <div class="guide-footer__buttons js-footer-buttons">
         <button class="btn--secondary" type="button">Previous</button>
         <button class="btn" type="button">OK, Got It!</button>
       </div>
-      <p class="guide-footer__skip js__footer-skip">Skip this tutorial</p>
+      <p class="guide-footer__skip js-footer-skip" tabindex="0" role="button">Skip this tutorial</p>
     </div><!-- /page-footer -->
   </div>
 </div><!-- /slideout -->
