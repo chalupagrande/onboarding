@@ -16,7 +16,7 @@ class GuideFooter{
     this._buttons = this._element.querySelector('.js-footer-buttons')
     this._opts = {
                    prev : opts.prev || "Previous",
-                   next : opts.next || "Ok, got it!",
+                   next : opts.next || "Next",
                    default: opts.default || "See How It Works",
                    skip: opts.skip || "Skip this tutorial",
                    finished: opts.finished || "Get Started!"

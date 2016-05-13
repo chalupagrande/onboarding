@@ -29,9 +29,10 @@ class GuideTag{
     }
 
     const stati = ['New', 'In Progress', 'Completed']
+    const statiClass = ['new', 'in-progress', 'is-completed']
     this._status = status || 0
-    switchClass(this._element, stati, removeSpaceMakeLowercase(stati[this._status]))
-    this._statusElement.innerHTML = '<span class="guide-tag__status__'+
-                 removeSpaceMakeLowercase(stati[this._status])+'">'+stati[this._status]+'</span>'
+    switchClass(this._element, statiClass, statiClass[this._status])
+    this._statusElement.innerHTML = '<span class="guide-tag__status--'+
+                 statiClass[this._status]+'">'+stati[this._status]+'</span>'
   }
 }

@@ -102,7 +102,7 @@ var GuideFooter = function () {
     this._buttons = this._element.querySelector('.js-footer-buttons');
     this._opts = {
       prev: opts.prev || "Previous",
-      next: opts.next || "Ok, got it!",
+      next: opts.next || "Next",
       default: opts.default || "See How It Works",
       skip: opts.skip || "Skip this tutorial",
       finished: opts.finished || "Get Started!"
@@ -243,9 +243,10 @@ var GuideTag = function () {
       }
 
       var stati = ['New', 'In Progress', 'Completed'];
+      var statiClass = ['new', 'in-progress', 'is-completed'];
       this._status = status || 0;
-      switchClass(this._element, stati, removeSpaceMakeLowercase(stati[this._status]));
-      this._statusElement.innerHTML = '<span class="guide-tag__status__' + removeSpaceMakeLowercase(stati[this._status]) + '">' + stati[this._status] + '</span>';
+      switchClass(this._element, statiClass, statiClass[this._status]);
+      this._statusElement.innerHTML = '<span class="guide-tag__status--' + statiClass[this._status] + '">' + stati[this._status] + '</span>';
     }
   }]);
 
@@ -450,7 +451,7 @@ var Walkthrough = function () {
     value: function findStatus() {
       for (var i = 0; i < this._guides.length; i++) {
         if (this._guides[i].status() == 0) {
-          toggleClass(this._helpIcon, 'highlight');
+          toggleClass(this._helpIcon, 'is-highlighted');
         }
       }
     }

@@ -42,7 +42,7 @@ class Walkthrough{
   findStatus(){
     for(var i = 0; i < this._guides.length; i++){
       if(this._guides[i].status() == 0){
-        toggleClass(this._helpIcon,'highlight')
+        toggleClass(this._helpIcon,'is-highlighted')
       }
     }
   }

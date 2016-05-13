@@ -18,8 +18,8 @@ body {
   position: static;
 }
 
-//TYPOGRAPHY
-//~~~~~~~~~~~~~~~~~
+/*TYPOGRAPHY
+~~~~~~~~~~~~~~~~~ */
 
 .h1 {
   display: block;
@@ -33,8 +33,8 @@ p {
   line-height: 20px;
 }
 
-// Globals
-//~~~~~~~~~~~~~~~~~~~~
+/* Globals
+~~~~~~~~~~~~~~~~~~~~ */
 
 .content {
   background-color: $red;
@@ -54,8 +54,8 @@ p {
   width: 100vw;
 }
 
-// Slideout
-// ~~~~~~~~~~~~~~~~~~~
+/* Slideout
+~~~~~~~~~~~~~~~~~~~ */
 
 $slideout-width: ems(305);
 
@@ -93,14 +93,16 @@ $slideout-width: ems(305);
   cursor: pointer;
 }
 
-// Walkthrough
-// ~~~~~~~~~~~~~~~~~~~~~
+/* Walkthrough
+~~~~~~~~~~~~~~~~~~~~~ */
+
 .walkthrough-header {
   margin: ems(27) ems(40);
 }
 
-// Progress Dots
-// ~~~~~~~~~~~~~~~~~~~~~
+/* Progress Dots
+~~~~~~~~~~~~~~~~~~~~~ */
+
 .progress-dots {
   display: flex;
   justify-content: center;
@@ -133,14 +135,16 @@ $slideout-width: ems(305);
   }
 }
 
-// Guide
-// ~~~~~~~~~~~~~~~~~~~
+/* Guide
+~~~~~~~~~~~~~~~~~~~ */
+
 .guide {
   margin-top: ems(40);
 }
 
-// GuideTags
-// ~~~~~~~~~~~~~~~~~~~~~
+/* GuideTags
+~~~~~~~~~~~~~~~~~~~~~ */
+
 .guide-tag {
   align-items: center;
   border-left: ems(8) solid $bright-blue;
@@ -152,11 +156,11 @@ $slideout-width: ems(305);
   min-height: ems(76);
   width: 100%;
 
-  &.completed {
+  &.is-completed {
     opacity: .3;
   }
 
-  &.in_progress {
+  &.in-progress {
     opacity: .6;
   }
 }
@@ -182,7 +186,7 @@ $slideout-width: ems(305);
   text-align: right;
   text-wrap: none;
 
-  &__new {
+  &--new {
     align-items: flex-start;
     display: flex;
     line-height: 16px;
@@ -191,12 +195,12 @@ $slideout-width: ems(305);
     &::before {
       color: $red;
       content: '\2022';
-      font-size: ems(20) !important;
+      font-size: ems(20);
       margin-right: ems(5);
     }
   }
 
-  &__in_progress {
+  &--in-progress {
     color: $bright-blue;
   }
 }
@@ -208,8 +212,8 @@ $slideout-width: ems(305);
   margin-bottom: ems(5);
 }
 
-// Page
-// ~~~~~~~~~~~~~~~~~~~~~
+/* Page
+~~~~~~~~~~~~~~~~~~~~~ */
 
 .page {
   margin: ems(35) ems(35) 0;
@@ -229,14 +233,14 @@ $slideout-width: ems(305);
   }
 
   // page specific highlighting
-  & .highlight {
+  & .is-highlighted {
     font-weight: bold;
     color: $bright-blue;
   }
 }
 
-// Guide Footer
-// ~~~~~~~~~~~~~~~~~
+/* Guide Footer
+~~~~~~~~~~~~~~~~~ */
 
 .guide-footer {
   width: 100%;
@@ -288,7 +292,7 @@ $font-size: $size * 0.7;
   position: relative;
 
   &.animate {
-    &:before {
+    &::before {
       width: ems($size);
       height: ems($size);
       content: '';
@@ -300,7 +304,7 @@ $font-size: $size * 0.7;
       animation: pulse 2s alternate infinite;
     }
 
-    &:after {
+    &::after {
       width: ems($size);
       height: ems($size);
       content: '';
@@ -367,7 +371,7 @@ $font-size: $size * 0.7;
   z-index: 100;
   cursor: pointer;
 
-  &.highlight {
+  &.is-highlighted {
     &::before {
       background-color: $red;
       border-radius: 50%;

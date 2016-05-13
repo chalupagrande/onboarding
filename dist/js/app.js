@@ -27,7 +27,7 @@ var toggleSlide;
 (function () {
   window.addEventListener('load', function () {
 
-    /*  add listeners to toggle onboarding in and out.  */
+    //  add listeners to toggle onboarding in and out.
 
     toggleSlide = getToggleSlideFunc(slideout, -1, 500, resizeContent);
     getNode('.js-guide-trigger').addEventListener('click', toggleSlide);

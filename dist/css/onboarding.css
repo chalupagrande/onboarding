@@ -2667,6 +2667,8 @@ body {
 .bluemix-header {
   position: static; }
 
+/*TYPOGRAPHY
+~~~~~~~~~~~~~~~~~ */
 .h1 {
   display: block;
   font-size: 1.25rem;
@@ -2677,6 +2679,8 @@ p {
   font-size: 0.875rem;
   line-height: 20px; }
 
+/* Globals
+~~~~~~~~~~~~~~~~~~~~ */
 .content {
   background-color: #ff5050;
   display: flex;
@@ -2692,6 +2696,8 @@ p {
   position: relative;
   width: 100vw; }
 
+/* Slideout
+~~~~~~~~~~~~~~~~~~~ */
 .slideout {
   background-color: #152934;
   color: #fff;
@@ -2722,9 +2728,13 @@ p {
   width: 1.25rem;
   cursor: pointer; }
 
+/* Walkthrough
+~~~~~~~~~~~~~~~~~~~~~ */
 .walkthrough-header {
   margin: 1.6875rem 2.5rem; }
 
+/* Progress Dots
+~~~~~~~~~~~~~~~~~~~~~ */
 .progress-dots {
   display: flex;
   justify-content: center; }
@@ -2748,9 +2758,13 @@ p {
     width: 0.625rem;
     border-top: 1px solid #5aaafa; }
 
+/* Guide
+~~~~~~~~~~~~~~~~~~~ */
 .guide {
   margin-top: 2.5rem; }
 
+/* GuideTags
+~~~~~~~~~~~~~~~~~~~~~ */
 .guide-tag {
   align-items: center;
   border-left: 0.5rem solid #5aaafa;
@@ -2761,9 +2775,9 @@ p {
   margin: 1px 0;
   min-height: 4.75rem;
   width: 100%; }
-  .guide-tag.completed {
+  .guide-tag.is-completed {
     opacity: .3; }
-  .guide-tag.in_progress {
+  .guide-tag.in-progress {
     opacity: .6; }
 
 .guide-tag__wrap {
@@ -2784,16 +2798,16 @@ p {
   margin-right: 0.3125rem;
   text-align: right;
   text-wrap: none; }
-  .guide-tag__status__new {
+  .guide-tag__status--new {
     align-items: flex-start;
     display: flex;
     line-height: 16px; }
-    .guide-tag__status__new::before {
+    .guide-tag__status--new::before {
       color: #ff5050;
       content: '\2022';
-      font-size: 1.25rem !important;
+      font-size: 1.25rem;
       margin-right: 0.3125rem; }
-  .guide-tag__status__in_progress {
+  .guide-tag__status--in-progress {
     color: #5aaafa; }
 
 .guide-tag__title {
@@ -2802,6 +2816,8 @@ p {
   font-weight: 700;
   margin-bottom: 0.3125rem; }
 
+/* Page
+~~~~~~~~~~~~~~~~~~~~~ */
 .page {
   margin: 2.1875rem 2.1875rem 0;
   position: relative; }
@@ -2814,10 +2830,12 @@ p {
       margin: 0.25rem 1.25rem 0 0;
       width: 1.25rem;
       height: 1.25rem; }
-  .page .highlight {
+  .page .is-highlighted {
     font-weight: bold;
     color: #5aaafa; }
 
+/* Guide Footer
+~~~~~~~~~~~~~~~~~ */
 .guide-footer {
   width: 100%;
   height: 5.8125rem;
@@ -2850,7 +2868,7 @@ p {
   min-width: 1.5625rem;
   text-align: center;
   position: relative; }
-  .numbered-dot.animate:before {
+  .numbered-dot.animate::before {
     width: 1.5625rem;
     height: 1.5625rem;
     content: '';
@@ -2860,7 +2878,7 @@ p {
     top: -0.15625rem;
     left: -0.15625rem;
     animation: pulse 2s alternate infinite; }
-  .numbered-dot.animate:after {
+  .numbered-dot.animate::after {
     width: 1.5625rem;
     height: 1.5625rem;
     content: '';
@@ -2910,7 +2928,7 @@ p {
   width: 2.5rem;
   z-index: 100;
   cursor: pointer; }
-  .help.highlight::before {
+  .help.is-highlighted::before {
     background-color: #ff5050;
     border-radius: 50%;
     content: '';

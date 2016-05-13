@@ -44,6 +44,8 @@ var toggleSlide;
   })
 })();
 
+
+
 (()=>{
   var buttonNavs = document.querySelectorAll('[role="button"]')
     makeArray(buttonNavs).forEach(function(el){
