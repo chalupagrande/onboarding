@@ -12,6 +12,7 @@ gulp.task('serve', ['process', 'compile'], function(){
     }
   })
 
+
   gulp.watch(['src/**/*.js'], ['compile'])
   gulp.watch(["src/sass/**/*.scss"], ['process']);
   gulp.watch(['dist/*.html','src/sass/**/*.scss','src/**/*.js']).on('change', browserSync.reload)

@@ -102,7 +102,7 @@ var GuideFooter = function () {
     this._buttons = this._element.querySelector('.js-footer-buttons');
     this._opts = {
       prev: opts.prev || "Previous",
-      next: opts.next || "OK, got it!",
+      next: opts.next || "Ok, got it!",
       default: opts.default || "See How It Works",
       skip: opts.skip || "Skip this tutorial",
       finished: opts.finished || "Get Started!"
@@ -115,20 +115,23 @@ var GuideFooter = function () {
   _createClass(GuideFooter, [{
     key: 'render',
     value: function render(pageNum, totalPages, nextTitle) {
-      this._buttons.innerHTML = '';
       this._skip.innerHTML = '';
 
       if (pageNum == 0) {
+        this._buttons.innerHTML = '';
         this._skip.innerText = this._opts.skip;
         this.buildButtons(0);
         this._skip.addEventListener('click', this._skipListener);
-      } else if (pageNum == totalPages - 1) {
-        this._skip.innerHTML = "";
-        this.buildButtons(2);
-      } else {
-        this._skip.innerText = "NEXT: " + nextTitle;
+      } else if (pageNum == 1) {
+        this._buttons.innerHTML = '';
         this.buildButtons(1);
+        this._skip.innerText = "Next: " + nextTitle;
         this._skip.removeEventListener('click', this._skipListener);
+      } else if (pageNum == totalPages - 1) {
+        this._buttons.querySelector('.btn').innerText = this._opts.finished;
+        this._skip.innerHTML = "";
+      } else {
+        this._skip.innerText = "Next: " + nextTitle;
       }
     }
   }, {
@@ -171,31 +174,7 @@ var GuideFooter = function () {
           });
 
           self._buttons.appendChild(btn2);
-
-          //last page
-        } else if (style == 2) {
-            btn = document.createElement('button');
-            btn.setAttribute('class', 'btn--secondary');
-            btn.setAttribute('type', 'button');
-            btn.innerText = self._opts.prev;
-
-            btn.addEventListener('click', function () {
-              self._spy('previous');
-            });
-
-            self._buttons.appendChild(btn);
-
-            btn2 = document.createElement('button');
-            btn2.setAttribute('class', 'btn');
-            btn2.setAttribute('type', 'button');
-            btn2.innerText = self._opts.finished;
-
-            btn2.addEventListener('click', function () {
-              self._spy('next');
-            });
-
-            self._buttons.appendChild(btn2);
-          }
+        }
     }
   }]);
 

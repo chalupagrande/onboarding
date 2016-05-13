@@ -25,6 +25,7 @@ body {
   display: block;
   font-size: ems(20);
   font-weight: bold;
+  margin-bottom: ems(5);
 }
 
 p {
@@ -211,7 +212,7 @@ $slideout-width: ems(305);
 // ~~~~~~~~~~~~~~~~~~~~~
 
 .page {
-  margin: ems(40) ems(40) 0;
+  margin: ems(35) ems(35) 0;
   position: relative;
 
   &__item {
