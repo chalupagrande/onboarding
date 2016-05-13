@@ -131,6 +131,7 @@ var GuideFooter = function () {
         this._buttons.querySelector('.btn').innerText = this._opts.finished;
         this._skip.innerHTML = "";
       } else {
+        this._buttons.querySelector('.btn').innerText = this._opts.next;
         this._skip.innerText = "Next: " + nextTitle;
       }
     }
