@@ -84,8 +84,8 @@ Function.prototype.papp = function () {
   };
 };
 
-function makeArray(arraLikeObject) {
-  return Array.prototype.slice.call(arraLikeObject);
+function makeArray(arrayLikeObject) {
+  return Array.prototype.slice.call(arrayLikeObject);
 }
 
 function addClass(el, className) {
