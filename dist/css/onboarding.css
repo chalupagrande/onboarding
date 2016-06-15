@@ -2856,6 +2856,8 @@ p {
       cursor: pointer !important;
       text-decoration: underline; }
 
+/*  ~~ Numbered Dots  ~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .numbered-dot {
   align-items: center;
   border-radius: 50%;
