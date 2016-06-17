@@ -2737,7 +2737,8 @@ p {
 ~~~~~~~~~~~~~~~~~~~~~ */
 .progress-dots {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  margin: 0.5rem; }
 
 .progress-dots__list {
   display: flex;
@@ -2819,13 +2820,17 @@ p {
 /* Page
 ~~~~~~~~~~~~~~~~~~~~~ */
 .page {
-  margin: 2.1875rem 2.1875rem 0;
-  position: relative; }
+  padding: 0 2.1875rem 0;
+  position: relative;
+  height: calc(100vh - 200px);
+  overflow-y: auto; }
   .page__item {
     margin-top: 2.5rem;
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start; }
+    .page__item--center {
+      margin: 0 auto; }
     .page__item__icon {
       margin: 0.25rem 1.25rem 0 0;
       width: 1.25rem;
@@ -2841,7 +2846,8 @@ p {
   height: 5.8125rem;
   position: absolute;
   bottom: 0;
-  text-align: center; }
+  text-align: center;
+  background-color: #152934; }
   .guide-footer__buttons {
     display: flex;
     flex-flow: row nowrap;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="233px" height="100px" viewBox="0 0 233 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="28" cy="28" r="3"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="14" height="14">
+            <rect x="21" y="21" width="14" height="14" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <circle id="path-3" cx="48" cy="67" r="3"></circle>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="14" height="14">
+            <rect x="41" y="60" width="14" height="14" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+        <rect id="path-5" x="124" y="11" width="107" height="75"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="107" height="75" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4---Patterns-Copy-2" transform="translate(-1170.000000, -500.000000)">
+            <g id="Group-8" transform="translate(1172.000000, 500.000000)">
+                <circle id="Oval-1134" fill-opacity="0.2" fill="#008571" cx="25.5" cy="25.5" r="6.5"></circle>
+                <circle id="Oval-1134-Copy-2" fill-opacity="0.2" fill="#008571" cx="45.5" cy="64.5" r="6.5"></circle>
+                <path d="M0,52.7611041 L23.521208,31 M30.9239824,32.6615126 L45.1238832,62.3213028 M52.6245415,63.5805368 L79.4172058,41.2850967" id="Path-4960" stroke="#00B4A0" stroke-width="4"></path>
+                <use id="Oval-1134" stroke="#41D6C3" mask="url(#mask-2)" stroke-width="8" xlink:href="#path-1"></use>
+                <use id="Oval-1134-Copy" stroke="#DFE6EB" mask="url(#mask-4)" stroke-width="8" xlink:href="#path-3"></use>
+                <polyline id="Path-4961" fill="#D8D8D8" transform="translate(36.139780, 77.139780) rotate(45.000000) translate(-36.139780, -77.139780) " points="36.1871373 72.0719588 36.0890489 72.2225844 32.524641 77.6961274 35.1365844 77.6961274 35.1365844 82.207601 37.1250922 82.207601 37.1250922 77.667957 39.7549188 77.6484312 36.1491914 72.1542703"></polyline>
+                <path d="M100,0.472034752 L100,40.7145351" id="Path-4963" stroke="#394B54" stroke-width="3"></path>
+                <path d="M100,59.4720348 L100,99.7145351" id="Path-4963-Copy" stroke="#394B54" stroke-width="3"></path>
+                <polyline id="Path-4966" stroke="#394B54" stroke-width="3" points="97.138236 45 102.148033 50.0097973 97 54.9514634"></polyline>
+                <use id="Rectangle-1123" stroke="#008571" mask="url(#mask-6)" stroke-width="8" fill-opacity="0.2" fill="#008571" xlink:href="#path-5"></use>
+                <text id="1.9s" font-family="HelvNeueBoldforIBM, HelvNeue Bold for IBM" font-size="20" font-weight="bold" fill="#41D6C3">
+                    <tspan x="163" y="55">1.9s</tspan>
+                </text>
+                <path d="M146.571747,25 L193,25" id="Path-4985-Copy-32" stroke="#00B4A0" stroke-width="4"></path>
+                <path d="M147.571747,74 L174.018913,74" id="Path-4985-Copy-33" stroke="#008571" stroke-width="4"></path>
+                <path d="M188.571747,74 L215.018913,74" id="Path-4985-Copy-34" stroke="#008571" stroke-width="4"></path>
+                <rect id="Rectangle-1124" stroke="#008571" stroke-width="4" fill="#00B4A0" x="126" y="13" width="10" height="71"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

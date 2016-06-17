@@ -106,6 +106,7 @@ $slideout-width: ems(305);
 .progress-dots {
   display: flex;
   justify-content: center;
+  margin: ems(8);
 }
 
 .progress-dots__list {
@@ -216,14 +217,20 @@ $slideout-width: ems(305);
 ~~~~~~~~~~~~~~~~~~~~~ */
 
 .page {
-  margin: ems(35) ems(35) 0;
+  padding: 0 ems(35) 0;
   position: relative;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
 
   &__item {
     margin-top: ems(40);
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
+
+    &--center {
+      margin: 0 auto;
+    }
 
     &__icon {
       margin: ems(4) ems(20) 0 0;
@@ -248,6 +255,7 @@ $slideout-width: ems(305);
   position: absolute;
   bottom: 0;
   text-align: center;
+  background-color: $dark-blue;
 
   &__buttons {
     display: flex;

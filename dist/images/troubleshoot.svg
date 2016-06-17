@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="171px" height="101px" viewBox="0 0 171 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4---Patterns-Copy" transform="translate(-1203.000000, -500.000000)">
+            <g id="Group-8" transform="translate(1203.000000, 501.000000)">
+                <rect id="Rectangle-1117-Copy-7" fill-opacity="0.2" fill="#008571" x="0" y="25" width="170.112093" height="33"></rect>
+                <rect id="Rectangle-1117-Copy-8" fill-opacity="0.2" fill="#008571" x="0.0935024632" y="58" width="170.01859" height="33"></rect>
+                <text id="Alerts" font-family="HelvNeueBoldforIBM, HelvNeue Bold for IBM" font-size="10" font-weight="bold" fill="#41D6C3">
+                    <tspan x="7.11209276" y="45">Alerts</tspan>
+                </text>
+                <text id="Warning" font-family="HelvNeueLightforIBM, HelvNeue Light for IBM" font-size="10" font-weight="normal" fill="#6EEDD8">
+                    <tspan x="54.1120928" y="7">Warning</tspan>
+                </text>
+                <text id="Critical" font-family="HelvNeueLightforIBM, HelvNeue Light for IBM" font-size="10" font-weight="normal" fill="#6EEDD8">
+                    <tspan x="113.112093" y="7">Critical</tspan>
+                </text>
+                <text id="Activity" font-family="HelvNeueBoldforIBM, HelvNeue Bold for IBM" font-size="10" font-weight="bold" fill="#41D6C3">
+                    <tspan x="7.11209276" y="79">Activity</tspan>
+                </text>
+                <polyline id="Path-4984-Copy-7" stroke="#008571" stroke-width="4" points="6.11647314 25 168.731363 25 168.731363 100"></polyline>
+                <path d="M7.10439856,59 L169.151271,59" id="Path-4985-Copy-41" stroke="#008571" stroke-width="4"></path>
+                <ellipse id="Oval-1544-Copy" fill="#41D6C3" cx="121.113486" cy="42" rx="4.00139306" ry="4"></ellipse>
+                <polygon id="Triangle-56-Copy" fill="#41D6C3" points="147.113486 38 151.114879 46 143.112093 46"></polygon>
+                <polygon id="Triangle-56-Copy-4" fill="#41D6C3" points="80.1134858 38 84.1148789 46 76.1120928 46"></polygon>
+                <path d="M113.112093,85.5 L113.112093,68" id="Line-Copy-23" stroke="#41D6C3" stroke-width="3" stroke-dasharray="2,3"></path>
+                <path d="M134.112093,85.5 L134.112093,68" id="Line-Copy-24" stroke="#41D6C3" stroke-width="3" stroke-dasharray="2,3"></path>
+                <path d="M80.6120928,34.9360965 L80.6120928,10.6867725" id="Path-6280" stroke="#FFFFFF" stroke-dasharray="1,1"></path>
+                <path d="M121.612093,34.9723638 L121.612093,10.7230399" id="Path-6280-Copy" stroke="#FFFFFF" stroke-dasharray="1,1"></path>
+            </g>
+        </g>
+    </g>
+</svg>
