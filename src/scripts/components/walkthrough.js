@@ -22,6 +22,8 @@ class Walkthrough{
     slideoutNav.style.opacity = 1
     slideoutNav.style.cursor = 'pointer'
     this._element.style.display = 'none'
+
+    //check if you're on the right page
     guide.show()
 
     this._currentGuide = guide

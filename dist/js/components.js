@@ -116,8 +116,11 @@ var GuideFooter = function () {
     key: 'render',
     value: function render(pageNum, totalPages, nextTitle) {
       this._skip.innerHTML = '';
-
-      if (pageNum == 0) {
+      if (pageNum == -1) {
+        this._buttons.innerHTML = '';
+        this._skip.innerText = this._opts.skip;
+        this._skip.addEventListener('click', this._skipListener);
+      } else if (pageNum == 0) {
         this._buttons.innerHTML = '';
         this._skip.innerText = this._opts.skip;
         this.buildButtons(0);
@@ -277,18 +280,32 @@ var Guide = function () {
 
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length);
     this._pages = [];
+    this._intro;
     this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy);
 
     for (var i = 0; i < pages.length; i++) {
-      this._pages.push(new GuidePage(pages[i], i, pageSpy));
+      if (pages[i].querySelector('.intro')) {
+        this._intro = new GuidePage(pages[i], -1, pageSpy);
+      } else {
+        this._pages.push(new GuidePage(pages[i], i, pageSpy));
+      }
     }
 
     this.next();
   }
 
   _createClass(Guide, [{
+    key: 'intro',
+    value: function intro() {
+      this._intro.render();
+      this._footer.render(-1);
+      this._dots.set(0);
+      window.correctPage = true;
+    }
+  }, {
     key: 'next',
     value: function next() {
+      //last page -> close guide
       if (this._currentPage == this._pages.length - 1) {
         this._spy();
         return;
@@ -341,6 +358,17 @@ var Guide = function () {
     key: 'show',
     value: function show() {
       this._element.style.display = 'block';
+      if (!window.correctPage) {
+        this.intro();
+      } else {
+        //show the next page
+        this._currentPage += 1;
+        var nextPage = this._pages[this._currentPage];
+        var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
+        nextPage.render();
+        this._footer.render(this._currentPage, this._pages.length, nextTitle);
+        this._dots.next();
+      }
     }
   }, {
     key: 'setSpy',
@@ -429,6 +457,8 @@ var Walkthrough = function () {
       slideoutNav.style.opacity = 1;
       slideoutNav.style.cursor = 'pointer';
       this._element.style.display = 'none';
+
+      //check if you're on the right page
       guide.show();
 
       this._currentGuide = guide;

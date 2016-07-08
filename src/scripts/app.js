@@ -2,6 +2,14 @@
   Reposition Slideout Container on scroll
 */
 
+
+/*
+  Using this variable to simulate the fact
+  that the UI is on the wrong page
+*/
+window.correctPage = false
+
+//create two different guides
 var guide = new Guide({
   element: getNode('.guide[data-guide-name="monitoring"]'),
   pages: getNode('.pages').children
@@ -12,6 +20,8 @@ var guide2 = new Guide({
   pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children
 })
 
+
+// create a walkthrough (most global class)
 var walkthrough = new Walkthrough({
   element: getNode('.walkthrough'),
   guides: [guide, guide2],
@@ -29,10 +39,13 @@ var toggleSlide;
 
     toggleSlide = getToggleSlideFunc(slideout, -1, 500, resizeContent)
     getNode('.js-guide-trigger').addEventListener('click', toggleSlide)
+
+    //add listener to ?
     slideout.querySelector('.js-guide-trigger').addEventListener('click', function(){
       walkthrough.hideGuide()
       toggleSlide()
     })
+    //open by default
     toggleSlide()
 
     slideout.querySelector('.slideout__nav').addEventListener('click', function(){
@@ -45,7 +58,7 @@ var toggleSlide;
 })();
 
 
-
+//accessibility addition
 (()=>{
   var buttonNavs = document.querySelectorAll('[role="button"]')
     makeArray(buttonNavs).forEach(function(el){

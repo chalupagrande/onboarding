@@ -28,8 +28,13 @@ class GuideFooter{
 
   render(pageNum, totalPages, nextTitle){
     this._skip.innerHTML = ''
+    if( pageNum == -1){
+      this._buttons.innerHTML = ''
+      this._skip.innerText = this._opts.skip
+      this._skip.addEventListener('click', this._skipListener)
 
-    if(pageNum == 0){
+    }
+    else if(pageNum == 0){
       this._buttons.innerHTML = ''
       this._skip.innerText = this._opts.skip
       this.buildButtons(0)

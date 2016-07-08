@@ -15,16 +15,28 @@ class Guide{
 
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length)
     this._pages = []
+    this._intro;
     this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy)
 
     for(var i = 0; i < pages.length; i++){
-      this._pages.push( new GuidePage(pages[i], i, pageSpy))
+      if(pages[i].querySelector('.intro')){
+        this._intro = new GuidePage(pages[i], -1, pageSpy)
+      } else {
+        this._pages.push( new GuidePage(pages[i], i, pageSpy))
+      }
     }
 
     this.next()
   }
+  intro(){
+    this._intro.render()
+    this._footer.render(-1)
+    this._dots.set(0)
+    window.correctPage = true
+  }
 
   next(){
+    //last page -> close guide
     if(this._currentPage == this._pages.length -1 ){
       this._spy()
       return
@@ -72,6 +84,17 @@ class Guide{
   }
   show(){
     this._element.style.display = 'block'
+    if(!window.correctPage){
+      this.intro()
+    } else {
+      //show the next page
+      this._currentPage +=1
+      var nextPage = this._pages[this._currentPage]
+      var nextTitle = this._pages[this._currentPage +1] ? this._pages[this._currentPage+1].title : '';
+      nextPage.render()
+      this._footer.render(this._currentPage, this._pages.length, nextTitle)
+      this._dots.next()
+    }
   }
   setSpy(spy){
     this._spy = spy;
