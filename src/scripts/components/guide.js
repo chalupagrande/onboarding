@@ -29,6 +29,7 @@ class Guide{
     this.next()
   }
   intro(){
+    this._pages[this._currentPage].remove()
     this._intro.render()
     this._footer.render(-1)
     this._dots.set(0)
@@ -88,7 +89,8 @@ class Guide{
       this.intro()
     } else {
       //show the next page
-      this._currentPage +=1
+      this._intro.remove()
+      this._currentPage = 0
       var nextPage = this._pages[this._currentPage]
       var nextTitle = this._pages[this._currentPage +1] ? this._pages[this._currentPage+1].title : '';
       nextPage.render()
