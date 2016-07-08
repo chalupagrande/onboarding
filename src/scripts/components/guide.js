@@ -90,12 +90,11 @@ class Guide{
     } else {
       //show the next page
       this._intro.remove()
-      this._currentPage = 0
       var nextPage = this._pages[this._currentPage]
       var nextTitle = this._pages[this._currentPage +1] ? this._pages[this._currentPage+1].title : '';
       nextPage.render()
       this._footer.render(this._currentPage, this._pages.length, nextTitle)
-      this._dots.next()
+      this._dots.set(this._currentPage+1)
     }
   }
   setSpy(spy){

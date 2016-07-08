@@ -6,6 +6,7 @@ class Walkthrough{
     this._helpIcon = helpIcon
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children)
+    this._order = this._guideList
 
     //hide pages & set spy
     let guideSpy = getGuideSpy(self)
@@ -47,6 +48,10 @@ class Walkthrough{
         toggleClass(this._helpIcon,'is-highlighted')
       }
     }
+  }
+
+  rearrangeGuideTags(){
+    //TODO
   }
 }
 

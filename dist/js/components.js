@@ -364,12 +364,11 @@ var Guide = function () {
       } else {
         //show the next page
         this._intro.remove();
-        this._currentPage = 0;
         var nextPage = this._pages[this._currentPage];
         var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
         nextPage.render();
         this._footer.render(this._currentPage, this._pages.length, nextTitle);
-        this._dots.next();
+        this._dots.set(this._currentPage + 1);
       }
     }
   }, {
@@ -441,6 +440,7 @@ var Walkthrough = function () {
     this._helpIcon = helpIcon;
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children);
+    this._order = this._guideList;
 
     //hide pages & set spy
     var guideSpy = getGuideSpy(self);
@@ -487,6 +487,11 @@ var Walkthrough = function () {
           toggleClass(this._helpIcon, 'is-highlighted');
         }
       }
+    }
+  }, {
+    key: 'rearrangeGuideTags',
+    value: function rearrangeGuideTags() {
+      //TODO
     }
   }]);
 
