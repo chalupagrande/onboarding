@@ -18,7 +18,7 @@ class GuideFooter{
                    prev : opts.prev || "Previous",
                    next : opts.next || "Next",
                    default: opts.default || "See How It Works",
-                   skip: opts.skip || "Skip this tutorial",
+                   skip: opts.skip || "Skip this guide",
                    finished: opts.finished || "Get Started!"
                  }
     this._skipListener = function(){
