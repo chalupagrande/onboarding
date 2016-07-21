@@ -15,6 +15,7 @@ var guide = new Guide({
   pages: getNode('.pages').children
 });
 
+
 var guide2 = new Guide({
   element: getNode('.guide[data-guide-name="response"]'),
   pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children

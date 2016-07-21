@@ -282,7 +282,6 @@ var Guide = function () {
     var pagesWOIntro = makeArray(pages).filter(function (el) {
       return !hasClass(el.querySelector('.page'), 'intro');
     });
-    debugger;
 
     this._dots = new Dots(this._element.querySelector('.progress-dots'), pagesWOIntro.length);
     this._pages = [];
@@ -296,7 +295,6 @@ var Guide = function () {
         this._pages.push(new GuidePage(pages[i], i, pageSpy));
       }
     }
-
     this.next();
   }
 
@@ -307,11 +305,15 @@ var Guide = function () {
       this._intro.render();
       this._footer.render(-1);
       this._dots.set(0);
+      this.status(1);
+
+      //toggle correctPage for demonstration
       window.correctPage = true;
     }
   }, {
     key: 'next',
     value: function next() {
+
       //last page -> close guide
       if (this._currentPage == this._pages.length - 1) {
         this._spy();
@@ -365,11 +367,11 @@ var Guide = function () {
     key: 'show',
     value: function show() {
       this._element.style.display = 'block';
-      if (!window.correctPage) {
+      if (!window.correctPage && this._intro) {
         this.intro();
       } else {
         //show the next page
-        this._intro.remove();
+        if (this._intro) this._intro.remove();
         var nextPage = this._pages[this._currentPage];
         var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
         nextPage.render();
