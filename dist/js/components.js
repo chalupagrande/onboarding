@@ -278,7 +278,13 @@ var Guide = function () {
     this.name = this._element.getAttribute('data-guide-name');
     this._tag = new GuideTag(getNode('.guide-tag[data-guide-name="' + this.name + '"]'), null, tagSpy);
 
-    this._dots = new Dots(this._element.querySelector('.progress-dots'), pages.length);
+    //check to see if guide has '.intro' page
+    var pagesWOIntro = makeArray(pages).filter(function (el) {
+      return !hasClass(el.querySelector('.page'), 'intro');
+    });
+    debugger;
+
+    this._dots = new Dots(this._element.querySelector('.progress-dots'), pagesWOIntro.length);
     this._pages = [];
     this._intro;
     this._footer = new GuideFooter(this._element.querySelector('.guide-footer'), {}, footerSpy);
@@ -364,12 +370,11 @@ var Guide = function () {
       } else {
         //show the next page
         this._intro.remove();
-        this._currentPage = 0;
         var nextPage = this._pages[this._currentPage];
         var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
         nextPage.render();
         this._footer.render(this._currentPage, this._pages.length, nextTitle);
-        this._dots.next();
+        this._dots.set(this._currentPage + 1);
       }
     }
   }, {
@@ -441,6 +446,7 @@ var Walkthrough = function () {
     this._helpIcon = helpIcon;
     this._currentGuide;
     this._guideList = makeArray(this._element.querySelector('.walkthrough__guides').children);
+    this._order = this._guideList;
 
     //hide pages & set spy
     var guideSpy = getGuideSpy(self);
@@ -487,6 +493,11 @@ var Walkthrough = function () {
           toggleClass(this._helpIcon, 'is-highlighted');
         }
       }
+    }
+  }, {
+    key: 'rearrangeGuideTags',
+    value: function rearrangeGuideTags() {
+      //TODO
     }
   }]);
 
