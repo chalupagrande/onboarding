@@ -170,6 +170,7 @@ $slideout-width: ems(305);
   align-items: baseline;
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .guide-tag__content {
@@ -269,16 +270,29 @@ $slideout-width: ems(305);
         margin-left: ems(15);
       }
     }
+
+    .btn--next {
+      font-weight: 900;
+    }
   }
 
   &__skip {
     margin-top: ems(16);
-
+    font-weight: bold;
     &:hover {
       cursor: pointer !important;
       text-decoration: underline;
     }
+
+    &.next {
+      cursor: default !important;
+
+      &:hover{
+        text-decoration: none !important;
+      }
+    }
   }
+
 }
 
 /*  ~~ Numbered Dots  ~~

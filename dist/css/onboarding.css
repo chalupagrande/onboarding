@@ -2784,7 +2784,8 @@ p {
 .guide-tag__wrap {
   align-items: baseline;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  width: 100%; }
 
 .guide-tag__content {
   flex: 3;
@@ -2856,11 +2857,18 @@ p {
       min-width: 7.5rem; }
       .guide-footer__buttons [class*='btn']:nth-child(2) {
         margin-left: 0.9375rem; }
+    .guide-footer__buttons .btn--next {
+      font-weight: 900; }
   .guide-footer__skip {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    font-weight: bold; }
     .guide-footer__skip:hover {
       cursor: pointer !important;
       text-decoration: underline; }
+    .guide-footer__skip.next {
+      cursor: default !important; }
+      .guide-footer__skip.next:hover {
+        text-decoration: none !important; }
 
 /*  ~~ Numbered Dots  ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

@@ -116,27 +116,37 @@ var GuideFooter = function () {
     key: 'render',
     value: function render(pageNum, totalPages, nextTitle) {
       this._skip.innerHTML = '';
+      //PANEL 0 - Description on how to get to page
       if (pageNum == -1) {
         this._buttons.innerHTML = '';
         this._skip.innerText = this._opts.skip;
         this._skip.addEventListener('click', this._skipListener);
-      } else if (pageNum == 0) {
-        this._buttons.innerHTML = '';
-        this._skip.innerText = this._opts.skip;
-        this.buildButtons(0);
-        this._skip.addEventListener('click', this._skipListener);
-      } else if (pageNum == 1) {
-        this._buttons.innerHTML = '';
-        this.buildButtons(1);
-        this._skip.innerText = "Next: " + nextTitle;
-        this._skip.removeEventListener('click', this._skipListener);
-      } else if (pageNum == totalPages - 1) {
-        this._buttons.querySelector('.btn').innerText = this._opts.finished;
-        this._skip.innerHTML = "";
-      } else {
-        this._buttons.querySelector('.btn').innerText = this._opts.next;
-        this._skip.innerText = "Next: " + nextTitle;
       }
+      //FIRST PAGE - Welcome Page
+      else if (pageNum == 0) {
+          this._buttons.innerHTML = '';
+          this._skip.innerText = this._opts.skip;
+          this.buildButtons(0);
+          if (hasClass(this._skip, 'next')) toggleClass(this._skip, 'next');
+          this._skip.addEventListener('click', this._skipListener);
+          //ON LAST PAGE - draw finished buttons
+        } else if (pageNum == totalPages - 1) {
+            this._buttons.innerHTML = '';
+            this.buildButtons(1);
+            this._buttons.querySelector('.btn').innerText = this._opts.finished;
+            this._skip.innerHTML = "";
+            //ON FIRST MIDDLE PAGE -- draw next buttons
+          } else if (pageNum == 1) {
+              this._buttons.innerHTML = '';
+              this.buildButtons(1);
+              this._skip.innerText = "Next: " + nextTitle;
+              if (!hasClass(this._skip, 'next')) toggleClass(this._skip, 'next');
+              this._skip.removeEventListener('click', this._skipListener);
+              // ON MIDDLE PAGE - update next
+            } else {
+                this._buttons.querySelector('.btn').innerText = this._opts.next;
+                this._skip.innerText = "Next: " + nextTitle;
+              }
     }
   }, {
     key: 'buildButtons',
@@ -158,7 +168,7 @@ var GuideFooter = function () {
         //middle pages
       } else if (style == 1) {
           btn = document.createElement('button');
-          btn.setAttribute('class', 'btn--secondary');
+          btn.setAttribute('class', 'btn--secondary btn--previous');
           btn.setAttribute('type', 'button');
           btn.innerText = self._opts.prev;
 
@@ -169,7 +179,7 @@ var GuideFooter = function () {
           self._buttons.appendChild(btn);
 
           btn2 = document.createElement('button');
-          btn2.setAttribute('class', 'btn');
+          btn2.setAttribute('class', 'btn btn--next');
           btn2.setAttribute('type', 'button');
           btn2.innerText = self._opts.next;
 
@@ -329,6 +339,11 @@ var Guide = function () {
       var nextTitle = this._pages[this._currentPage + 1] ? this._pages[this._currentPage + 1].title : '';
 
       nextPage.render();
+
+      /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      YOU WERE HERE
+      */
+
       this._footer.render(this._currentPage, this._pages.length, nextTitle);
       this._dots.next();
     }

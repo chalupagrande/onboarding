@@ -28,25 +28,33 @@ class GuideFooter{
 
   render(pageNum, totalPages, nextTitle){
     this._skip.innerHTML = ''
+    //PANEL 0 - Description on how to get to page
     if( pageNum == -1){
       this._buttons.innerHTML = ''
       this._skip.innerText = this._opts.skip
       this._skip.addEventListener('click', this._skipListener)
-
     }
+    //FIRST PAGE - Welcome Page
     else if(pageNum == 0){
       this._buttons.innerHTML = ''
       this._skip.innerText = this._opts.skip
       this.buildButtons(0)
+      if(hasClass(this._skip, 'next')) toggleClass(this._skip, 'next')
       this._skip.addEventListener('click', this._skipListener)
+    //ON LAST PAGE - draw finished buttons
+    } else if(pageNum == totalPages -1){
+      this._buttons.innerHTML = ''
+      this.buildButtons(1)
+      this._buttons.querySelector('.btn').innerText = this._opts.finished
+      this._skip.innerHTML = ""
+    //ON FIRST MIDDLE PAGE -- draw next buttons
     } else if(pageNum == 1){
       this._buttons.innerHTML = ''
       this.buildButtons(1)
       this._skip.innerText = "Next: "+ nextTitle
+      if(!hasClass(this._skip, 'next')) toggleClass(this._skip, 'next')
       this._skip.removeEventListener('click', this._skipListener)
-    } else if(pageNum == totalPages -1){
-      this._buttons.querySelector('.btn').innerText = this._opts.finished
-      this._skip.innerHTML = ""
+    // ON MIDDLE PAGE - update next
     } else {
       this._buttons.querySelector('.btn').innerText = this._opts.next
       this._skip.innerText = "Next: "+ nextTitle
@@ -71,7 +79,7 @@ class GuideFooter{
     //middle pages
     }else if(style == 1){
       btn = document.createElement('button')
-      btn.setAttribute('class','btn--secondary')
+      btn.setAttribute('class','btn--secondary btn--previous')
       btn.setAttribute('type','button')
       btn.innerText = self._opts.prev
 
@@ -82,7 +90,7 @@ class GuideFooter{
       self._buttons.appendChild(btn)
 
       btn2 = document.createElement('button')
-      btn2.setAttribute('class','btn')
+      btn2.setAttribute('class','btn btn--next')
       btn2.setAttribute('type','button')
       btn2.innerText = self._opts.next
 

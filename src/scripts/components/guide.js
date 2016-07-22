@@ -61,6 +61,11 @@ class Guide{
 
 
     nextPage.render()
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    YOU WERE HERE
+    */
+
     this._footer.render(this._currentPage, this._pages.length, nextTitle)
     this._dots.next()
   }
