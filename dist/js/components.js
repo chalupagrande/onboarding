@@ -139,13 +139,13 @@ var GuideFooter = function () {
           } else if (pageNum == 1) {
               this._buttons.innerHTML = '';
               this.buildButtons(1);
-              this._skip.innerText = "Next: " + nextTitle;
+              this._skip.innerHTML = "<span class='bold'>Next:</span> " + nextTitle;
               if (!hasClass(this._skip, 'next')) toggleClass(this._skip, 'next');
               this._skip.removeEventListener('click', this._skipListener);
               // ON MIDDLE PAGE - update next
             } else {
                 this._buttons.querySelector('.btn').innerText = this._opts.next;
-                this._skip.innerText = "Next: " + nextTitle;
+                this._skip.innerHTML = "<span class='bold'>Next:</span> " + nextTitle;
               }
     }
   }, {

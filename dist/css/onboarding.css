@@ -2673,7 +2673,8 @@ body {
   display: block;
   font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 0.3125rem; }
+  margin-bottom: 0.3125rem;
+  letter-spacing: .02rem; }
 
 p {
   font-size: 0.875rem;
@@ -2722,7 +2723,8 @@ p {
   align-items: center;
   cursor: default;
   display: flex;
-  opacity: 0; }
+  opacity: 0;
+  font-weight: bold; }
 
 .slideout__close {
   width: 1.25rem;
@@ -2816,7 +2818,8 @@ p {
   font-size: 0.875rem;
   display: block;
   font-weight: 700;
-  margin-bottom: 0.3125rem; }
+  margin-bottom: 0.3125rem;
+  letter-spacing: .02rem; }
 
 /* Page
 ~~~~~~~~~~~~~~~~~~~~~ */
@@ -2844,7 +2847,8 @@ p {
 ~~~~~~~~~~~~~~~~~ */
 .guide-footer {
   width: 100%;
-  height: 5.8125rem;
+  height: 6.4375rem;
+  padding-top: 0.625rem;
   position: absolute;
   bottom: 0;
   text-align: center;
@@ -2857,18 +2861,18 @@ p {
       min-width: 7.5rem; }
       .guide-footer__buttons [class*='btn']:nth-child(2) {
         margin-left: 0.9375rem; }
-    .guide-footer__buttons .btn--next {
-      font-weight: 900; }
   .guide-footer__skip {
-    margin-top: 1rem;
-    font-weight: bold; }
+    margin-top: 1rem; }
     .guide-footer__skip:hover {
       cursor: pointer !important;
       text-decoration: underline; }
     .guide-footer__skip.next {
-      cursor: default !important; }
+      cursor: default !important;
+      font-weight: 300; }
       .guide-footer__skip.next:hover {
         text-decoration: none !important; }
+      .guide-footer__skip.next .bold {
+        font-weight: bold; }
 
 /*  ~~ Numbered Dots  ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -2930,12 +2934,12 @@ p {
 .help {
   align-items: center;
   border-radius: 50%;
-  border: 0.125rem solid #5aaafa;
+  border: 0.1875rem solid #5aaafa;
   bottom: 1rem;
   color: #5aaafa;
   display: flex;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 500;
   height: 2.5rem;
   justify-content: center;
   position: fixed;

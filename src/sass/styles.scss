@@ -26,6 +26,7 @@ body {
   font-size: ems(20);
   font-weight: bold;
   margin-bottom: ems(5);
+  letter-spacing: .02rem;
 }
 
 p {
@@ -86,6 +87,7 @@ $slideout-width: ems(305);
   cursor: default;
   display: flex;
   opacity: 0;
+  font-weight: bold;
 }
 
 .slideout__close {
@@ -212,6 +214,7 @@ $slideout-width: ems(305);
   display: block;
   font-weight: 700;
   margin-bottom: ems(5);
+  letter-spacing: .02rem;
 }
 
 /* Page
@@ -252,7 +255,8 @@ $slideout-width: ems(305);
 
 .guide-footer {
   width: 100%;
-  height: ems(93);
+  height: ems(103);
+  padding-top: ems(10);
   position: absolute;
   bottom: 0;
   text-align: center;
@@ -270,15 +274,10 @@ $slideout-width: ems(305);
         margin-left: ems(15);
       }
     }
-
-    .btn--next {
-      font-weight: 900;
-    }
   }
 
   &__skip {
     margin-top: ems(16);
-    font-weight: bold;
     &:hover {
       cursor: pointer !important;
       text-decoration: underline;
@@ -286,9 +285,14 @@ $slideout-width: ems(305);
 
     &.next {
       cursor: default !important;
+      font-weight: 300;
 
       &:hover{
         text-decoration: none !important;
+      }
+
+      & .bold {
+        font-weight: bold;
       }
     }
   }
@@ -379,12 +383,12 @@ $font-size: $size * 0.7;
 .help {
   align-items: center;
   border-radius: 50%;
-  border: ems(2) solid $bright-blue;
+  border: ems(3) solid $bright-blue;
   bottom: 1rem;
   color: $bright-blue;
   display: flex;
   font-size: ems(24);
-  font-weight: bold;
+  font-weight: 500;
   height: ems(40);
   justify-content: center;
   position: fixed;
