@@ -21,11 +21,16 @@ var guide2 = new Guide({
   pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children
 })
 
+var guide3 = new Guide({
+  element: getNode('.guide[data-guide-name="something"]'),
+  pages: getNode('.guide[data-guide-name="response"]').querySelector('.pages').children
+})
+
 
 // create a walkthrough (most global class)
 var walkthrough = new Walkthrough({
   element: getNode('.walkthrough'),
-  guides: [guide, guide2],
+  guides: [guide, guide2, guide3],
   helpIcon: document.querySelector('.help')
 })
 

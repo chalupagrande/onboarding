@@ -496,10 +496,10 @@ var Walkthrough = function () {
       if (!this._currentGuide) return;
       slideoutNav.style.opacity = 0;
       slideoutNav.style.cursor = 'pointer';
-
       this._currentGuide.hide();
-      this._element.style.display = 'block';
 
+      this.rearrangeGuideTags();
+      this._element.style.display = 'block';
       this._currentGuide = undefined;
     }
   }, {
@@ -514,7 +514,26 @@ var Walkthrough = function () {
   }, {
     key: 'rearrangeGuideTags',
     value: function rearrangeGuideTags() {
-      //TODO
+      var inProgress = [];
+      var complete = [];
+      this._guides.forEach(function (guide) {
+        if (guide._status == 1) {
+          inProgress.push(guide);
+        } else if (guide._status == 2) {
+          complete.push(guide);
+        }
+      });
+
+      var DOMGuideList = this._element.querySelector('.walkthrough__guides');
+      var combined = inProgress.concat(complete);
+      combined.forEach(function (guide) {
+
+        //remove the tag then append to the bottom
+        var li = guide._tag._element.parentNode;
+        var temp = li;
+        li.parentNode.removeChild(li);
+        DOMGuideList.appendChild(temp);
+      });
     }
   }]);
 
