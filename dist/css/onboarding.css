@@ -2825,7 +2825,7 @@ p {
 /* Page
 ~~~~~~~~~~~~~~~~~~~~~ */
 .page {
-  padding: 0 2.1875rem 0;
+  padding: 0 2.1875rem 0ems 35;
   position: relative;
   height: calc(100vh - 200px);
   overflow-y: auto; }
