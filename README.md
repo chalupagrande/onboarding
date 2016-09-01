@@ -13,4 +13,4 @@ If you `Skip [the] Tutorial` on the Intro page, then the `window.correctPage` va
 `$ bower install` => `$ npm install` => `gulp`
 
 ###Demo:
-https://pages.github.ibm.com/j-skinner/onboarding/dist/
+https://ninth-mind.github.io/onboarding/dist/
